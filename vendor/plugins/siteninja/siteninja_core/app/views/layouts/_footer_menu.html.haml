@@ -1,0 +1,4 @@
+- unless @footer_pages.empty?
+  %ul#footer-menu
+    - for page in @footer_pages
+      %li= link_to h(page.title), "/#{page.permalink}"

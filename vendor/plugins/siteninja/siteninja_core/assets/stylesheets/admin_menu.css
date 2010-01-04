@@ -1,0 +1,105 @@
+#admin-menu {
+  padding: 5px;
+  background-color: #333;
+  color: #eee;
+  font-size: .75em;
+  border-bottom: 1px solid #292929;
+}
+
+#admin-menu a {
+  color: #eee;
+  text-decoration: none;
+}
+
+#admin-menu .signout {
+  text-align: right;
+  padding: 5px;
+}
+
+#admin-menu .signout a {
+  text-decoration: underline;
+}
+
+#admin-menu .signout a:hover {
+  color: #ff6;
+}
+
+#admin-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#admin-menu li {
+  float: left;
+  line-height: 16px;
+  text-align: left;
+  margin-right: 15px;
+}
+
+#admin-menu li a {
+  padding: 5px;
+	float: left;
+  padding-left: 25px;
+}
+#admin-menu li a:hover {
+	background-color: #444;
+	color: #ff6;
+}
+
+#admin-home {
+	background: url('/plugin_assets/siteninja_core/images/icons/black/16x16/Home.png') no-repeat 4px 5px;
+}
+
+#admin-pages {
+	background: url('/plugin_assets/siteninja_core/images/icons/black/16x16/Clipboard Copy.png') no-repeat 4px 5px;
+}
+
+#admin-blogs {
+	background: url('/plugin_assets/siteninja_core/images/icons/black/16x16/Write.png') no-repeat 4px 5px;
+}
+
+#admin-galleries {
+	background: url('/plugin_assets/siteninja_core/images/icons/black/16x16/Picture.png') no-repeat 4px 5px;
+}
+
+#admin-assets {
+	background: url('/plugin_assets/siteninja_core/images/icons/black/16x16/Folder2.png') no-repeat 4px 5px;
+}
+
+#admin-settings {
+	background: url('/plugin_assets/siteninja_core/images/icons/black/16x16/Gear.png') no-repeat 4px 5px;
+}
+
+#admin-documents {
+	background: url('/plugin_assets/siteninja_core/images/icons/black/16x16/Folder3.png') no-repeat 4px 5px;
+}
+
+#admin-users {
+	background: url('/plugin_assets/siteninja_core/images/icons/black/16x16/Lock Open.png') no-repeat 4px 5px;
+}
+
+#admin-contacts {
+	background: url('/plugin_assets/siteninja_core/images/icons/black/16x16/User.png') no-repeat 4px 5px;
+}
+
+#admin-events {
+	background: url('/plugin_assets/siteninja_core/images/icons/black/16x16/Clock.png') no-repeat 4px 5px;
+}
+
+#admin-inquiries {
+	background: url('/plugin_assets/siteninja_core/images/icons/black/16x16/Bubble 1.png') no-repeat 4px 5px;
+}
+#admin-product {
+	background: url('/plugin_assets/siteninja_core/images/icons/black/16x16/Cube.png') no-repeat 4px 5px;
+}
+#admin-store {
+	background: url('/plugin_assets/siteninja_core/images/icons/black/16x16/Cart.png') no-repeat 4px 5px;
+}
+#admin-order {
+	background: url('/plugin_assets/siteninja_core/images/icons/black/16x16/Currency Dollar.png') no-repeat 4px 5px;
+}
+#admin-travel {
+	background: url('/plugin_assets/siteninja_core/images/icons/black/16x16/Globe.png') no-repeat 4px 5px;
+}
+

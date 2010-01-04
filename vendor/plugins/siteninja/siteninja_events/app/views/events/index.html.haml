@@ -1,0 +1,28 @@
+- content_for :meta_title do
+  = "Past" if @past
+  Events
+/ - content_for :instruction do
+/   -if @page.introduction_banner_body and @page.introduction_banner_headline
+/     = render :partial => "shared/intro_banner", :locals => { :show_category_name => true, :current => @page }
+
+%h1= yield(:meta_title).strip
+
+- @events_grouped.each do |year_and_month, events|
+  %h2.event_month== #{month_name(year_and_month.last)} #{year_and_month.first}
+  %ul.events
+    - for event in events
+      %li[event]
+        = link_to h(event.name), event
+        %span.event_date== on #{event.date_and_time.strftime('%a, %B')} #{event.date_and_time.day.ordinalize}
+        - if event.today? # before midnight
+          %span.event_tag.event_tag_soon today!
+        - elsif event.tomorrow?
+          %span.event_tag.event_tag_soon tomorrow
+        - elsif event.this_week?
+          %span.event_tag.event_tag_this_week this week
+        - if @cms_config['features']['event_registration']  
+          - if event.registration? and event.date_and_time >= Date.tomorrow.to_time
+            - if event.registration_spots?
+              %span.event_tag.event_tag_open registration open
+            - else
+              %span.event_tag.event_tag_full registration full

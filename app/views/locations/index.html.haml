@@ -1,0 +1,11 @@
+- render :partial => "/layouts/google_map_markers"
+
+- content_for :title do
+  Locations
+
+%h1= yield :title
+
+- if @locations.empty?
+  %h2 Sorry, but we have no locations listed yet.
+- else
+  = render :partial => 'materials/location_list'

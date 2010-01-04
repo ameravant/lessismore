@@ -1,0 +1,90 @@
+@import url(/stylesheets/simple_classes.css);
+
+input.search {
+  padding-left: 16px;
+  background: #fff url('/plugin_assets/siteninja_core/images/searchbg.gif') no-repeat;
+}
+
+textarea.editor {
+  font-size: 1.1em;
+  line-height: 1.3em;
+}
+
+span.hmenu { margin-right: 15px; }
+a.red:hover { background: #f00 !important; color: #fff !important; }
+.strike { text-decoration: line-through; color: #777; }
+.sale_price { font-weight: bold; }
+.icon { vertical-align: text-bottom; }
+a.icon:hover,
+a.lightview:hover { background: none !important; }
+.top { vertical-align: top; }
+.endrow { margin-right: 0 !important; }
+.bold { font-weight: bold; }
+.center { text-align: center; }
+.right { text-align: right; }
+.clear { clear: both; }
+.noborder { border: none; }
+.nopad { padding: 0; }
+.float-right { float: right; }
+
+tr.odd { background: #eee; }
+
+.col-left { float: left; width: 390px; }
+.col-right { float: right; width: 390px; }
+.col-left h1, .col-right h1 { margin-top: 0; }
+
+.radio-buttons label { margin-right: 20px; }
+
+.form-option { margin-bottom: 1.5em; }
+.submit { margin: 2em 0; }
+.submit input { font-size: 1.3em; }
+.submit, .submit a { color: #777; }
+.submit a:hover { color: #fff; background: #999; text-decoration: none; }
+
+.mime { float: left; margin: 0 1em 2em 0; width: 258px; }
+.mime .thumb { float: left; margin-right: .8em; }
+.mime .info { font-size: .9em; }
+.mime .info .info_link { margin-bottom: .4em; }
+
+.fieldWithErrors { display: inline; }
+.fieldWithErrors input,
+.fieldWithErrors select,
+.fieldWithErrors textarea { background: #ff9; }
+.fieldWithErrors label { color: #f00; background: #ff9; }
+
+.box {
+  background-color: #e9ecff;
+  border: 1px solid #c9ccdf;
+  padding: 10px;
+}
+
+.box h2 { margin-top: 0; }
+
+.tip { margin-bottom: 3em; }
+.tip h2 { margin-bottom: .2em; }
+.tip .body { margin-top: 1em; }
+
+.tag_cloud { font-size: .8em; width: 300px; }
+.cloud1, .cloud2, .cloud3, .cloud4 { margin-right: 15px; line-height: 1.5em; }
+.cloud4 { font-size: 1.35em; }
+.cloud3 { font-size: 1.2em; }
+.cloud2 { font-size: 1em; }
+.cloud1 { font-size: .8em; }
+
+.full { width: 100%; }
+
+.product { padding: 5px 10px; float: left; width: 200px; text-align: center; margin: 0 20px 20px 0; }
+.product .thumb { margin: 1em 0; }
+
+.product_images { float: right; margin: 0 0 20px 20px; text-align: center; }
+.product_images .main { padding-bottom: 20px; }
+
+.auto_image {
+  float: right;
+  margin: 0 0 20px 25px;
+}
+
+.auto_video {
+  margin: 30px 0;
+  clear: both;
+}

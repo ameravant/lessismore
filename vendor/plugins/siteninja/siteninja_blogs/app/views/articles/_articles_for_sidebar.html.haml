@@ -1,0 +1,10 @@
+- content_for :side_column do
+  %h1 Recent Articles
+  %ul.recent_articles.list_of_links
+    - for article in @recent_articles
+      %li
+        %h2= link_to article.title, article_path(article) 
+        %span.date= "Published #{time_ago_in_words(article.published_at)} ago" 
+        %p= truncate(article.blurb, 100) unless article.blurb.blank?
+        %span.more= link_to "read more", article_path(article)
+		

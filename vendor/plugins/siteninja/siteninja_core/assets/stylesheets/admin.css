@@ -1,0 +1,16 @@
+#sortable_list { padding: 0; margin: 0; list-style: none; }
+#sortable_list li { margin-bottom: 1em; }
+
+.comment { margin-top: 1em; border-bottom: 1px solid #ccc; }
+.product_image .options { float: left; margin-right: 20px; }
+.product_image .thumbnail { float: left; }
+.nested { padding: 6px 0 0 36px; }
+
+.mime .thumb-clipped { width: 48px; height: 42px; overflow: hidden; }
+
+#search_form { margin: 0; }
+
+.article_category_checkbox {
+  width: 180px;
+  float: left;
+}

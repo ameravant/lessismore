@@ -1,0 +1,56 @@
+- content_for :meta_title do
+  = @event.name
+
+- content_for :side_column do
+  %h2 Date and Time
+  .big
+    = soon_indicator(@event.date_and_time, '', true) if @event.future?
+    %div= @event.date_and_time.strftime("%A, %B %d, %Y at %I:%M %p %Z")
+
+  / Registration link
+  - if @event.future? and @event.registration?
+    %h2 Registration
+    - if @event.registration_spots?
+      - if @event.spots_available <= 10
+        .big.purple== Only #{pluralize @event.spots_available, 'spot'} left!
+      .big= link_to "Register Now &gt;", new_event_event_registration_path(@event)
+      You may pay by:
+      = payments_allowed(@event, @settings)
+    - else
+      - if @event.registration_closed_text.blank?
+        Sorry, but registration for this event is closed.
+      - else
+        = auto_link(h @event.registration_closed_text)
+
+  / Map and address
+  - unless @event.address.blank?
+    %h2 Location
+    - content_for :head do
+      = render :partial => "/shared/google_maps_includes"
+    %div= h @event.address
+    #google_map
+    %div= link_to "View larger map", "http://maps.google.com?q=#{u @event.address}"
+
+  / More events
+  - unless @event.registration? or @latest_events.empty?
+    %h2 More events
+    %ul.items-for-list
+      = render :partial => @latest_events
+  -unless @event.material_categories.blank?
+    %h2 Material Categories
+    .big
+      = link_to(@event.material_categories.first.name, @event.material_categories.first, :class => "#{@event.material_categories.first.css_class} material-for-item-list")
+  -unless @event.materials.blank?
+    %h2 Related Materials
+    .big
+      -for material in @event.materials
+        = link_to(material.name, material)
+
+%h1= yield(:meta_title).strip
+
+= simple_format(ninja_parse(@event.description))
+
+- if @event.future? and @event.registration? and @event.registration_spots?
+  %br
+  .big= link_to "Register Now &gt;", new_event_event_registration_path(@event)
+

@@ -1,0 +1,12 @@
+- content_for :title do
+  New region
+
+- content_for :crumb do
+  == #{link_to "Dashboard", admin_path} &gt;
+  == #{link_to "Regions", admin_regions_path} &gt;
+  = yield :title
+
+%h1= yield :title
+
+- form_for [:admin, @region], :html => { :onsubmit => "form_submitted()" } do |f|
+  = render :partial => "form", :locals => { :f => f }

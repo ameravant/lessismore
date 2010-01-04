@@ -1,0 +1,23 @@
+- content_for :title do
+  = h @material_category.name
+- content_for :instruction do
+  = render :partial => "shared/intro_banner", :locals => { :show_category_name => false, :current => @material_category }
+
+%h1{:class => @material_category.css_class}= h @material_category.name
+-unless @material_category.body.blank?
+  .material_cat_body= @material_category.body
+- unless @materials.empty?
+  %ul.materials
+    - for material in @materials
+      %li= link_to h(material.name), material
+- content_for :side_column do
+  - unless @articles.empty?
+    %h2 Related Articles
+    %ul.items-for-list
+      = render :partial => @articles
+
+  - unless @events.empty?
+    %h2 Related Events
+    %ul.items-for-list
+      = render :partial => @events
+

@@ -1,0 +1,15 @@
+- image = image_src
+- if type
+  - if type == "small"
+    = link_to(tag(:img, :src => image, :class => "auto_image"), image_lrg, :class => "fancy")
+  -elsif type == "medium"
+    .images
+      = link_to(tag(:img, :src => image), image_lrg, :class => "fancy")
+
+  -elsif type == "large"
+    = tag(:img, :src => "#{image}", :class => "auto_image")
+- else
+  = tag(:img, :src => "#{image}", :class => "auto_image")
+
+
+

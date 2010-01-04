@@ -1,0 +1,100 @@
+- content_for :head do
+  = javascript_include_tag "/plugin_assets/siteninja_events/javascripts/admin_events_form.rjs"
+= error_messages_for "event"
+%table{ :cellspacing => "0" }
+  %tr
+    %td.big
+      = f.label :name
+    %td
+      = f.text_field :name, :class => "big", :size => 30
+  %tr
+    %td
+      = f.label :address
+    %td
+      = f.text_field :address
+      %span.small
+        \&mdash; this will be shown on the page and used to display a map (
+        %strong
+          optional
+        )
+  %tr.top
+    %td
+      = f.label :date_and_time, "Event date/time"
+    %td
+      = f.datetime_select :date_and_time
+  %tr.top
+    %td
+      Material Categories
+    %td
+      - for material_category in @material_categories
+        %span.article_category_checkbox
+          = check_box_tag "event[material_category_ids][]", material_category.id, @event.material_categories.include?(material_category), :id => dom_id(material_category)
+          = label_tag dom_id(material_category), "#{material_category.name}"
+  %tr.top
+    %td= f.label :material_ids, "Materials"
+    %td{:class => "article_materials" }
+      - for material in @materials
+        %span.article_category_checkbox
+          = check_box_tag "event[material_ids][]", material.id, @event.materials.include?(material), :id => dom_id(material)
+          = label_tag dom_id(material), "#{material.name}"
+  =clear
+%br
+- if @cms_config['features']['event_registration']
+  %h2
+    Registration Options
+  %div
+    %div
+      = f.check_box :registration
+      %label{ :for => "event_registration" }
+        Registration enabled
+    #registration_limit{ :style => "display: none;" }
+      %br
+      %div
+        Only allow
+        = f.text_field :registration_limit, :size => 4
+        total people to register
+        %span.small.gray
+          \&mdash; optional
+      %br
+      %div
+        Message to display when registration is full and closed:
+      %div
+        = f.text_area :registration_closed_text, :size => "60x4"
+    #payments-allowed{ :style => "display: none;" }
+      %h3
+        Accepted Payments
+      %div
+        = f.check_box :allow_card
+        %label{ :for => "event_allow_card" }
+          Allow credit card payment via PayPal
+        %span.small.gray
+          \&mdash; must have PayPal configured in
+          = link_to "settings", edit_admin_setting_path
+      %div
+        = f.check_box :allow_cash
+        %label{ :for => "event_allow_cash" }
+          Allow cash payment at event
+        %span.small.gray
+          \&mdash; only if registration is required
+      %div
+        = f.check_box :allow_check
+        %label{ :for => "event_allow_check" }
+          Allow check payment
+        %span.small.gray
+          \&mdash; only if registration is required
+      #check-payment-options{ :style => "display: none;" }
+        %h3
+          Check Instructions
+        %p
+          Let registrants know what to do with the check, whether they need to mail it
+          to a specific address or bring it to the event.
+        = f.text_area :check_instructions, :size => "60x8"
+      /check-payment-options
+    /payments-allowed
+%br
+%h2
+  Description
+= f.text_area :description, :size => "80x30", :class => "mceEditor"
+- fancy_submit admin_events_path do
+  = f.submit "Save event"
+

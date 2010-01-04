@@ -1,0 +1,7 @@
+<% for result in @search_results %>
+  <%= result.name unless result.empty? %>
+  <%-for a in result %>
+    <%=link_to a.name, [a] %> 
+  <% end %>
+<% end %>
+

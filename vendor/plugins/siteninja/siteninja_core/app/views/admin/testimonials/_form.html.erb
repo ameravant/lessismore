@@ -1,0 +1,29 @@
+<%= error_messages_for "testimonial" %>
+<table cellspacing="0">
+  <tr class="<%= cycle 'odd', 'even' %>">
+    <td><%= f.label :quote %></td>
+    <td><%= f.text_area :quote, :size => "60x4" %></td>
+  </tr>
+  <tr class="<%= cycle 'odd', 'even' %>">
+    <td><%= f.label :author %></td>
+    <td><%= f.text_field :author %></td>
+  </tr>
+  <tr class="<%= cycle 'odd', 'even' %>">
+    <td><%= f.label :author_title, "Author's Company" %></td>
+    <td><%= f.text_field :author_title, :class => "big" %></td>
+  </tr>
+  <tr class="<%= cycle 'odd', 'even' %>">
+    <td><%= f.label :feature %></td>
+    <td><%= f.check_box :feature %></td>
+  </tr>
+</table>
+<br />
+<%- fancy_submit admin_pages_path do -%>
+  <%= submit_tag "Save testimonial" %>
+<%- end -%>
+<h2><%= f.label :body %></h2>
+<%= f.text_area :body, :size => "80x20", :class => "mceEditor" %>
+
+<%- fancy_submit admin_testimonials_path do -%>
+  <%= f.submit "Save testimonial" %>
+<%- end -%>

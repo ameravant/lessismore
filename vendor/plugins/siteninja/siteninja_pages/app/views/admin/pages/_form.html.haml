@@ -1,0 +1,62 @@
+= f.error_messages :message => "Please fix these things and try again:", :header_message => "We couldn't save your page"
+ 
+%table{:cellspacing => 0}
+  %tr{:class => cycle('odd', 'even')}
+    %td= f.label :title, "Name"
+    %td= f.text_field :title, :size => 25, :class => "big"
+  - if @page.can_delete?
+    %tr{:class => cycle('odd', 'even')}
+      %td Status
+      %td{:class => "radio-buttons"}
+        = f.radio_button :status, "visible"
+        %label{:for => "page_status_visible"} Visible
+        = f.radio_button :status, "hidden"
+        %label{:for => "page_status_hidden"} Hidden
+  %tr{:class => cycle('odd', 'even')} 
+    %td= f.label :parent_id, "Menu placement"
+    %td 
+      %select{:name => "page[parent_id]", :id => "page_parent_id"}
+        - for o in @options_for_parent_id
+          %option{:value => o[1] , :selected => (@page.parent_id and o[1] == @page.parent_id ? "selected" : nil)}= o[0]
+  %tr.top{:class => cycle('odd', 'even')}
+    %td= f.label :meta_title
+    %td
+      = f.text_area :meta_title, :size => "60x2"
+      %span.small required
+  %tr.top{:class => cycle('odd', 'even')}
+    %td= f.label :meta_description
+    %td= f.text_area :meta_description, :size => "60x2"
+  %tr.top{:class => cycle('odd', 'even')}
+    %td Options
+    %td
+      = f.check_box :automatically_embed_videos_and_images
+      = f.label :automatically_embed_videos_and_images
+  %tr.top{:class => cycle('odd', 'even')}
+    %td
+    %td
+      = f.check_box :show_in_footer
+      = f.label :show_in_footer, "Show in Footer Menu" 
+  %tr.top{:class => cycle('odd', 'even')}
+    %td
+    %td
+      = f.check_box :show_articles
+      = f.label :show_articles, "Show articles on this page?" 
+
+%p
+  = f.label :introduction_banner_headline
+  = f.text_field :introduction_banner_headline, :class => "admin_intro_banner"
+  %br
+  = f.label :introduction_banner_body
+  %br
+  = f.text_area :introduction_banner_body,:class => "admin_intro_banner", :size => "60x4"
+  %br
+  = f.label :introduction_banner_image, "Upload an image for the welcome banner."
+  = f.file_field :introduction_banner_image
+  %br
+%h2= f.label :body
+
+%div
+  = f.text_area :body, :size => "100x40", :class => "mceEditor"
+
+- fancy_submit admin_pages_path do
+  = submit_tag "Save page"

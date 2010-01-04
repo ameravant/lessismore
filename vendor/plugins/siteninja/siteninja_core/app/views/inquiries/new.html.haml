@@ -1,0 +1,23 @@
+= render :partial => "pages/show"
+
+- form_for @inquiry, :html => { :onsubmit => "form_submitted('Sending your message...')" } do |f|
+  = f.error_messages :header_message => "Unable to send your message"
+  %table{ :cellspacing => 0 }
+    %tr
+      %td= f.label :name
+      %td= f.text_field :name
+    %tr
+      %td= f.label :email
+      %td= f.text_field :email
+    %tr
+      %td= f.label :phone
+      %td
+        = f.text_field :phone, :size => 20
+        %span.gray optional
+    %tr.top
+      %td= f.label :inquiry, "Your message"
+      %td
+        = f.text_area :inquiry, :size => "60x8"
+        = text_field_tag "first_name", nil, :size => 1, :id => "inquiry_first_name"
+  - fancy_submit do
+    = f.submit "Submit inquiry"

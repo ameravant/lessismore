@@ -1,0 +1,12 @@
+- content_for :meta_title do
+  Articles by category:
+  = h @article_category.name
+
+%h1= yield(:meta_title).strip
+
+= render :partial => "/articles/sidebar"
+
+= render :partial => "/articles/article_for_list", :collection => @articles
+
+- unless @articles.total_pages == 1
+  = will_paginate @articles

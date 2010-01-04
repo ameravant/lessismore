@@ -1,0 +1,5 @@
+- content_for(:title) { concat "Add Event" }
+%h1
+  = yield :title
+- form_for :event, :url => admin_events_path, :html => { :onsubmit => "form_submitted();" } do |f|
+  = render :partial => "form", :locals => { :f => f }

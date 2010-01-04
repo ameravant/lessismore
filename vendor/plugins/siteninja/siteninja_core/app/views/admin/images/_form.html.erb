@@ -1,0 +1,29 @@
+<%= error_messages_for "image" %>
+
+<table cellspacing="0">
+  <tr>
+    <td><%= f.label :title %></td>
+    <td><%= f.text_field :title, :class => "big" %> <%= optional %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :caption %></td>
+    <td><%= f.text_field :caption, :class => "big" %> <%= optional %></td>
+  </tr>
+  <tr class="top">
+    <td><%= f.label :image %></td>
+    <td>
+      <%- unless @image.image_file_name.blank? -%>
+        <div style="margin-bottom: 1em;">
+          <%= link_to image_tag(@image.image.url(:small)), @image.image.url(:large), :rel => "lightbox" %>
+          <%= icon "Warning" %> Uploading a new image will replace this one.<br/>
+        </div>
+      <%- end -%>
+      <%= f.file_field :image %>
+    </td>
+  </tr>
+</table>
+<br/>
+
+<%- fancy_submit  [:admin, @owner] do -%>
+  <%= f.submit "Save image" %>
+<%- end -%>

@@ -1,0 +1,7 @@
+%div{ :id => dom_id event_price }
+  = link_to_remote image_tag("/images/icons/16x16/Trash.png", :id => "delete_icon_#{event_price.id}", :class => "icon"),  :url => admin_event_event_price_path(@event, event_price), :confirm => "Really delete this price?", :success => "$('delete_icon_#{event_price.id}').src = '/images/spinner.gif'", :class => "icon", :method => :delete
+  = icon "Write", edit_admin_event_event_price_path(@event, event_price)
+  \&nbsp;
+  = link_to h(event_price.description), edit_admin_event_event_price_path(@event, event_price)
+  \&mdash;
+  = display_event_price(event_price.price)

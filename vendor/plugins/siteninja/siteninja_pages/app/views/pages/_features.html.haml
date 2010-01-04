@@ -1,0 +1,20 @@
+#features.galleryview
+  - if @cms_config['website']['demo'] && @cms_config['website']['demo_message']
+    %div{:style => "float: left; background: #e6e6e6; color: #333; position: absolute; z-index: 100; padding: 5px; font-size: 1.2em; font-family: Georgia, \"Times New Roman\", Serif; font-weight: bold;"}
+      = @cms_config['website']['demo_message']
+  - for feature in @features
+    .panel
+      = link_to (image_tag(feature.featurable.images.sort_by(&:position).first.image.url(:slide), :title => feature.featurable.title, :alt => feature.featurable.title), feature.featurable)
+      .panel-overlay
+        %h2
+          = h feature.featurable.title
+        %p
+          = h feature.featurable.description
+          = link_to "Read more &raquo;", [feature.featurable]
+  - if @settings.show_feature_thumbs
+    %ul.filmstrip
+      - for feature in @features
+        %li
+          = image_tag(feature.featurable.images.sort_by(&:position).first.image.url(:small), :title => feature.featurable.title, :alt => feature.featurable.title, :style => "width: 85px; height: 55px")
+
+- @slideshow = true

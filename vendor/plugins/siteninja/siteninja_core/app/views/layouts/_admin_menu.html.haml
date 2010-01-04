@@ -1,0 +1,32 @@
+#admin-menu
+  %ul
+    %li= link_to "Dashboard", "/admin", :id => "admin-home"
+    - if @cms_config['modules']['pages']
+      %li= link_to "Assets", admin_assets_path, :id => "admin-assets"
+      %li= link_to "Pages", admin_pages_path, :id => "admin-pages"
+    - if @cms_config['modules']['blog']
+      %li= link_to "Blog", admin_articles_path, :id => "admin-blogs"
+    - if @cms_config['modules']['galleries']
+      %li= link_to "Galleries", admin_galleries_path, :id => "admin-galleries"
+    - if @cms_config['modules']['events'] 
+      %li= link_to "Events", admin_events_path, :id => "admin-events"
+    - if @cms_config['modules']['documents']
+      %li= link_to "Documents", admin_folders_path, :id => "admin-documents"
+    - if @cms_config['modules']['contacts'] and Rails.env.development?
+      %li= link_to "Contacts", admin_contacts_path, :id => "admin-contacts"
+    - if @cms_config['modules']['product'] and  Rails.env.development?
+      %li= link_to "Products", admin_products_path, :id => "admin-product"
+      %li= link_to "Orders", admin_orders_path, :id => "admin-order"
+    %li= link_to "Inquiries", admin_inquiries_path, :id => "admin-inquiries"
+    %li= link_to "Users", admin_users_path, :id => "admin-users"
+    %li= link_to "Locations", admin_locations_path, :id => "admin-travel"
+    %li= link_to "Materials", admin_materials_path, :id => "admin-settings"
+    %li= link_to "Material Categories", admin_material_categories_path, :id => "admin-settings"
+    %li= link_to "Regions", admin_regions_path, :id => "admin-settings"
+    %li= link_to "Settings", edit_admin_setting_path, :id => "admin-settings"
+  .signout
+    %span.hmenu
+      Signed in as
+      %strong= current_user.name
+    %span= link_to "sign out", session_path, :method => :delete
+  = clear

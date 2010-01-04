@@ -1,0 +1,92 @@
+= f.error_messages
+
+- content_for :head do
+  %script{:type => "text/javascript"}
+    function addtext(text) {
+    = "document.getElementById('article_body').value += ' ' + text + ' ';"
+    }
+  %style{:type => "text/css"}
+    div#fancy_div { background: #fff; }
+    div#fancy_div ul { margin: 0; padding: 0; height: 350px; overflow: auto; }
+    div#fancy_div ul li { float: left; margin: 0 5px 5px 0; font-size: .8em; padding: 5px; border: 1px solid #ccc; text-align: center; height: 115px }
+    div#fancy_div h2 { margin: 0 0 4px; font-family: tahoma, arial, sans-serif; font-size: 1em; color: #000; font-weight: normal; color: #999; }
+    div#fancy_div a { color: #336699; text-decoration: none; }
+    div#fancy_div a:hover { background: #336699; color: #fff; }
+%table{:cellspacing => "0"}
+  %tr
+    %td.big= f.label :title
+    %td= f.text_field :title, :class => "big", :size => 40
+  %tr.top
+    %td{:class => (!@article.new_record? and @article.article_categories.active.count == 0 ? "bold red" : nil)}= f.label :article_category_ids, "Category"
+    %td
+      - for article_category in @article_categories
+        %span.article_category_checkbox
+          = check_box_tag "article[article_category_ids][]", article_category.id, @article.article_categories.include?(article_category), :id => dom_id(article_category)
+          = label_tag dom_id(article_category), "#{article_category.name}"
+  %tr.top
+    %td{:class => (!@article.new_record? and @article.article_categories.active.count == 0 ? "bold red" : nil)}= f.label :material_category_ids, "Material Category"
+    %td
+      - for material_category in @material_categories
+        %span.article_category_checkbox
+          = check_box_tag "article[material_category_ids][]", material_category.id, @article.material_categories.include?(material_category), :id => dom_id(material_category)
+          = label_tag dom_id(material_category), "#{material_category.name}"
+      = clear
+  %tr
+    %td= f.label :description, "Short Description"
+    %td= f.text_field :description, :size => 60
+  %tr
+    %td= f.label :tag_list, "Tags"
+    %td= f.text_field :tag_list, :size => 60
+
+%h2= f.label :blurb
+= f.text_area :blurb, :size => "80x10", :class => "full_width"
+
+%h2= f.label :body
+= #link_to("#{icon('Picture')} Add Images", "#images", :class => "fancy")
+= f.text_area :body, :size => "80x30", :class => "mceEditor"
+
+%p
+  = f.check_box :published
+  = f.label :published, "Publish this article"
+  = f.label :published_at, "on"
+  = f.date_select :published_at, :order => [ :month, :day, :year ]
+
+%p
+  = f.check_box :social_share
+  = f.label :social_share, "Show ShareThis link"
+%p
+  = f.check_box :allow_comments
+  = f.label :allow_comments, "Allow comments"
+%p
+  = f.check_box :notify_author_of_comments
+  = f.label :notify_author_of_comments, "Notify me when comments are posted for this article"
+  %h2 Materials accepted
+
+- @materials.group_by(&:material_category).each do |material_category, materials|
+  %p{:class => "#{material_category.css_class}"}= h material_category.name
+  - for material in materials
+    %div[material]
+      = check_box_tag "location[material_ids][]", material.id, @article.materials.include?(material), :id => "check_box_#{dom_id material}"
+      %label{:for => "check_box_#{dom_id material}"}
+        - if material.name.size > 18
+          %abbr{:title => h(material.name)}= truncate h(material.name), :length => 18
+        - else
+          = h material.name
+  = clear
+
+%div#images{:style => "display: none;"}
+  - unless @article.images.empty?
+    %ul
+      - for image in @article.images
+        %li
+          = image_tag(image.image.url(:small), :alt => image.caption, :title => image.title)
+          %h2
+            = image.title
+          = link_to("Small", "#", :onclick => "addtext('image_tag_small:#{image.image.url(:small)}')")
+          = link_to("Medium", "#", :onclick => "addtext('image_tag_medium:#{image.image.url(:medium)}')")
+          = link_to("Large", "#", :onclick => "addtext('image_tag_large:#{image.image.url(:slide)}')")
+    = clear
+= clear
+- fancy_submit admin_articles_path do
+  = f.submit "Save article"
+

@@ -1,0 +1,9 @@
+%li[event]
+  %h3= link_to h(event.name), event
+  .date
+    = event.date_and_time.strftime("%B %d, %Y")
+    - unless @material_category
+      - unless event.material_categories.empty?
+        = "- "
+        = link_to(event.material_categories.first.name, event.material_categories.first, :class => "#{event.material_categories.first.css_class} material-for-item-list")
+

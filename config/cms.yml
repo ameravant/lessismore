@@ -1,0 +1,28 @@
+--- 
+keys: 
+  sharethis: 998f13df-36bb-4d5b-96fc-c750d3a55a99
+  google_maps: ABQIAAAAcFCYQRnwVUthPL-ySCSjJBSLDG_2ULvcs8_kz7lLyWlTqMYI6BQ3Mk_WENuT5q-vBi1wjshbLJ7aoQ
+modules: 
+  blog: true
+  documents: false
+  store: false
+  events: true
+  galleries: false
+  product: false
+  pages: true
+  version: 1.0.0
+  contacts: false
+development_keys: 
+  google_maps: ABQIAAAAcFCYQRnwVUthPL-ySCSjJBTJQa0g3IQ9GZqIMmInSLzwtGDKaBS8HXDFpTZcTkemWroqwX691T1xpg
+features: 
+  testimonials: false
+  feature_box: false
+  event_registration: false
+website: 
+  logo_position: top
+  name: Less Is More
+  domain: lessismore.org
+  demo: false
+  template: custom
+site_settings: 
+  file_up_size: 20
