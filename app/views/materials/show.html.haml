@@ -30,8 +30,8 @@
       =link_to rel_material.name, rel_material
   - unless @material.events.blank?
     %h2 Related Events
-    -for event in @material.events
-      =link_to event.name, event
+    %ul.items-for-list
+      = render :partial => @material.events.future
   - unless @material.articles.blank?
     %h2 Related Articles
     -for article in @material.articles
