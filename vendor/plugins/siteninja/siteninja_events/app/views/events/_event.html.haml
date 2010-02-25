@@ -6,8 +6,4 @@
       - unless event.material_categories.empty?
         = "- "
         = link_to(event.material_categories.first.name, event.material_categories.first, :class => "#{event.material_categories.first.css_class} material-for-item-list")
-    - if @material
-      - if !event.materials.empty?
-        = "- "
-        = link_to(event.materials.first.name, event.materials.first, :class => "#{event.materials.first.material_category.css_class} material-for-item-list")
     
