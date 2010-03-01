@@ -4,30 +4,28 @@
   = h @location.name
 
 - content_for :side_column do
-  - unless @location.blank?
-    %h2== About #{@location.name}
-    .description
-      -unless @location.phone.blank?
-        %strong Phone: 
-        =@location.phone
-        %br
-      -unless @location.website.blank?
-        %strong Website:
-        =link_to "#{@location.website}" , "http://#{@location.website.gsub("http://","")}"
-        %br
-      -unless @location.email.blank?
-        %strong Email:
-        =mail_to @location.email
-        %br
-      =@location.description
-      %address
-        -unless @location.full_address_sans_zip.blank?
-          %strong Address
-          = h @location.full_address_sans_zip
-          %br
-
   #map_canvas
 %h1= yield :title
+- unless @location.blank? 
+  .description
+    -unless @location.phone.blank?
+      %strong Phone: 
+      =@location.phone
+      %br
+    -unless @location.website.blank?
+      %strong Website:
+      =link_to "#{@location.website}" , "http://#{@location.website.gsub("http://","")}"
+      %br
+    -unless @location.email.blank?
+      %strong Email:
+      =mail_to @location.email
+      %br
+    =@location.description
+    %address
+      -unless @location.full_address_sans_zip.blank?
+        %strong Address
+        = h @location.full_address_sans_zip
+        %br
 %h2 Materials accepted
 .materials
   - if @materials.empty?

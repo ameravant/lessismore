@@ -1,4 +1,6 @@
 .img_right {float:right; margin:5px 0 5px 5px;}
+.img_center {margin-left:auto; margin-right:auto; padding:7px;}
+.img_left {float:left; padding:7px;}
 .big { font-size: 1.3em !important; }
 .bigger { font-size: 1.6em !important; line-height: 1.6em !important; }
 .small { font-size: .85em !important; }

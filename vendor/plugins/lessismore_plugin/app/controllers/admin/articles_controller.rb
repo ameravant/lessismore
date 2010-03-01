@@ -49,6 +49,7 @@ class Admin::ArticlesController < AdminController
   end
 
   def update
+    @article.materials = []
     if @article.update_attributes(params[:article])
       flash[:notice] = "Article \"#{@article.title}\" updated."
       redirect_to admin_articles_path

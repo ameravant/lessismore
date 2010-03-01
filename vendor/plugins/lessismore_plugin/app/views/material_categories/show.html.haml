@@ -11,13 +11,12 @@
     - for material in @materials
       %li= link_to h(material.name), material
 - content_for :side_column do
-  - unless @articles.empty?
-    %h2 Related Articles
-    %ul.items-for-list
-      = render :partial => @articles
-
   - unless @events.empty?
     %h2 Related Events
     %ul.items-for-list
       = render :partial => @events
+  - unless @articles.empty?
+    %h2 Related Articles
+    %ul.items-for-list
+      = render :partial => @articles
 
