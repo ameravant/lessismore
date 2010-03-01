@@ -1,0 +1,33 @@
+- content_for :title do
+  Locations
+
+- content_for :crumb do
+  == #{link_to "Dashboard", admin_path} &gt;
+  = yield :title
+
+%h1= yield :title
+
+%p
+  = icon "Plus"
+  = link_to "Add a new location", new_admin_location_path
+
+- if @locations.empty?
+  %h2
+    There are no locations.
+    = link_to "Create one.", new_admin_location_path
+- else
+  =# will_paginate @locations unless @locations.total_pages == 1
+  %ul.city
+    - @locations.group_by(&:region_name).each do |region, region_locations|
+      %li
+        %h3{:id => region}
+          = h region
+          == (#{region_locations.size})
+          %span.js-arrow
+        %ul.locations
+          - for location in region_locations.sort_by(&:name)
+            %li[location]
+              = link_to h(location.name), edit_admin_location_path(location)
+              = "&mdash; #{location.address}"
+              = link_to_remote image_tag("/images/icons/gray/16x16/Trash.png", :id => "delete_icon_#{location.id}"), :url => admin_location_path(location), :method => :delete, :success => "$('delete_icon_#{location.id}').src = '/images/spinner.gif'", :confirm => "Really delete this location?"
+

@@ -1,0 +1,60 @@
+= f.error_messages
+
+%p
+  = f.label :name
+  = f.text_field :name
+
+%p
+  = f.label :material_category_id
+  = f.select :material_category_id, @material_categories.map { |c| [c.name, c.id] }
+
+%p
+  = f.label :search_keywords
+  = f.text_field :search_keywords, :size => "50"
+
+%p
+  = f.label :in_sub_menu
+  = f.check_box :in_sub_menu
+  = f.label :position
+  = f.text_field :position, :size => "2"
+
+%p
+  = f.label :introduction_banner_headline
+  = f.text_field :introduction_banner_headline, :class => "admin_intro_banner"
+  %br
+  = f.label :introduction_banner_body
+  %br
+  = f.text_area :introduction_banner_body,:class => "admin_intro_banner", :size => "60x4"
+  %br
+  = f.label :introduction_banner_image, "Upload an image for the welcome banner."
+  = f.file_field :introduction_banner_image
+  %span optional
+
+%p
+  = f.label :instruction
+  %br
+  = f.text_area :instruction, :size => "60x4"
+%p
+  = f.label :description
+  = f.text_area :description,  :size => "80x30", :class => "mceEditor"
+
+
+
+%h2 Related Materials
+.related_materials
+  - for material in @materials
+    %div[material]
+      = check_box_tag "material[related_material_ids][]", material.id, @material ? @material.related_materials.include?(material) : nil, :id => "check_box_#{dom_id material}"
+      %label{:for => "check_box_#{dom_id material}"}= h material.name
+
+
+%h2 Locations accepting this material
+
+- for location in @locations
+  %div[location]
+    = check_box_tag "material[location_ids][]", location.id, @material ? @material.locations.include?(location) : nil, :id => "check_box_#{dom_id location}"
+    %label{:for => "check_box_#{dom_id location}"}= h location.name
+
+- fancy_submit admin_materials_path do
+  = f.submit "Save material", :class => "big"
+

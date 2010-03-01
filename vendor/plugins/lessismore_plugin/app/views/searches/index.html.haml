@@ -1,0 +1,10 @@
+%h1 Search Results
+-if !@search_results.flatten.empty?
+  %ul
+    -for result in @search_results
+      %h2=result.name unless result.empty?
+      -for a in result
+        %li=link_to a.name, [a]
+-else
+  %h2 There are no search results
+

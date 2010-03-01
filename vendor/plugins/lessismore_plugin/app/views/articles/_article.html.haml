@@ -1,0 +1,15 @@
+%li[article]
+  %h3= link_to h(article.title), article
+  .date
+    == #{article.published_at.strftime("%B %d, %Y")} by #{article.user.name}
+    - unless article.material_categories.empty?
+      = "- "
+      = link_to(article.material_categories.first.name, article.material_categories.first, :class => "#{article.material_categories.first.css_class} material-for-item-list")
+  - unless @material_category
+    - unless article.images.empty?
+      .images 
+        - image = article.images.sort_by(&:position).first
+        = link_to image_tag(image.image.url(:medium)), article, :title => h(image.caption)
+        = clear
+    = article.blurb
+    = link_to("Read more...", article)

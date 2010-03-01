@@ -1,0 +1,18 @@
+- content_for :title do
+  Regions
+
+- content_for :crumb do
+  == #{link_to "Dashboard", admin_path} &gt;
+  = yield :title
+
+%h1= yield :title
+
+%p
+  = icon "Plus"
+  = link_to "Add a new region", new_admin_region_path
+%ul
+  - for region in @regions
+    %li
+      = link_to h(region.name), edit_admin_region_path(region), :title => "go to #{region.name}"
+      %span.trash-icon= link_to_remote image_tag("/images/icons/gray/16x16/Trash.png", :id => "delete_icon_#{region.id}"), :url => admin_region_path(region), :method => :delete, :success => "$('delete_icon_#{region.id}').src = '/images/spinner.gif'", :confirm => "Really delete #{region.name}?"
+

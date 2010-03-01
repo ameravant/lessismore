@@ -1,0 +1,27 @@
+-$DOMAIN_PATH = "http://localhost:3000/"
+-tmp = current
+-if current.class == Material
+  -current = current.material_category
+-elsif @material_category.blank?
+  -current.css_class = ""
+-elsif current.class == Page and current.permalink != "home" and current.parent_id != 1
+  -current.css_class = @material_category.css_class
+%div.intro-box{:class => "#{current.css_class}_background"}
+  -if current.introduction_banner_image_file_name
+    = image_tag(current.introduction_banner_image(:intro), :alt => current.name)
+    -#%img{:src=> "#{$DOMAIN_PATH.strip.gsub!(/\/$/, "")}" + "#{@settings.introduction_banner_image(:large)}"}
+  %h1= !tmp.introduction_banner_headline.blank? ? tmp.introduction_banner_headline : current.introduction_banner_headline
+  %p= !tmp.introduction_banner_body.blank? ? tmp.introduction_banner_body : current.introduction_banner_body 
+  
+/ kip's original work below 
+/ #material_introduction_banner{:class => "#{@material_category.css_class}_background"}
+/   - if show_category_name
+/     #material_introduction_banner_title{:class => "#{@material_category.css_class}_background_dark"}
+/       = link_to h(@material_category.name), @material_category
+/   #material_introduction_banner_content
+/     - if @material and !@material.introduction_banner.blank?
+/       = simple_format(auto_link(h(@material.introduction_banner)))
+/     - elsif !@material_category.introduction_banner.blank?
+/       = simple_format(auto_link(h(@material_category.introduction_banner)))
+
+  
