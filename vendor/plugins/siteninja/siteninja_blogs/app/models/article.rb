@@ -1,4 +1,4 @@
-class Article < ActiveRecord::Base
+lass Article < ActiveRecord::Base
   has_and_belongs_to_many :material_categories
   has_permalink :title
   acts_as_taggable

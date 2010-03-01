@@ -1,4 +1,4 @@
-RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 
 require File.join(File.dirname(__FILE__), 'boot')
 require File.join(File.dirname(__FILE__), '../vendor/plugins/siteninja/engines/boot')
@@ -15,10 +15,10 @@ Rails::Initializer.run do |config|
   else
     config.action_mailer.default_url_options = { :host => "localhost:3000" }
   end
-
+  config.plugins = [:lessismore_plugin, :all]
+end
 require 'hirb'
 Hirb.enable
-
 MATERIALS = ["recycle", "reduce-reuse", "yard-waste", "hazardous-waste", "electronics", "trash"]
-end
+
 
