@@ -14,8 +14,8 @@ class PagesController < ApplicationController
       @page = Page.find_by_permalink! params[:id]
       if @page.parent_id
         parent = Page.find_by_id(@page.parent_id)
-        @material_category = MaterialCategory.find_by_permalink(parent.permalink)
         @sub_pages = Page.find(:all, :conditions => {:parent_id => parent.id, :status => 'visible'})
+        @material_category = MaterialCategory.find_by_permalink(parent.permalink)
         if @material_category
           @sub_materials = @material_category.materials.sort_by(&:position)
         end

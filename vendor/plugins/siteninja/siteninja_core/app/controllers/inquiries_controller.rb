@@ -4,8 +4,9 @@ class InquiriesController < ApplicationController
   before_filter :find_page
 
   def new
-    @page = Page.find_by_permalink!('inquire')
+    @page = Page.find_by_permalink!('contact-us')
     add_breadcrumb "#{@page.name}", nil
+    @sub_pages = Page.find(:all, :conditions => {:parent_id => @page.parent_id, :status => 'visible', :can_delete => true })
     @inquiry = Inquiry.new    
   end
   
@@ -13,15 +14,16 @@ class InquiriesController < ApplicationController
     return unless params[:first_name].blank? # spam bots will fill this hidden field out
     @inquiry = Inquiry.new(params[:inquiry])
     render :action => "new" unless @inquiry.save
-    @inquiry_page = Page.find_by_permalink!('inquire')
+    @inquiry_page = Page.find_by_permalink!('contact-us')
     @page = Page.find_by_permalink!('inquiry_received') # used in create view
+    @sub_pages = Page.find(:all, :conditions => {:parent_id => @page.parent_id, :status => 'visible', :can_delete => true })
     add_breadcrumb "#{@inquiry_page.name}", "\"/#{@inquiry_page.permalink}\""
     add_breadcrumb "Message sent"
   end
   
   def find_page
     @footer_pages = Page.find(:all, :conditions => {:show_in_footer => true}, :order => :footer_pos )
-    @page = Page.find_by_permalink!('inquire')
+    @page = Page.find_by_permalink!('contact-us')
     @article_categories = ArticleCategory.active
     @article_archive = Article.published.group_by { |a| [a.published_at.month, a.published_at.year] }
     @article_authors = User.active.find(:all, :conditions => "articles_count > 0")

@@ -1,6 +1,8 @@
 %ul
-  -if !@page.blank? and @page.permalink == "home"
-    %li=link_to "Locations", "locations"
+  -if !@page.blank? 
+    -if @page.permalink == "home" or @page.parent_id == 1
+      %li=link_to "Locations", "/locations"
+      %li=link_to "Contact Us", "/contact-us"
   -unless @sub_pages.blank?
     -for subpage in @sub_pages
       %li= link_to subpage.title, subpage
