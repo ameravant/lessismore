@@ -19,9 +19,14 @@
         )
   %tr.top
     %td
-      = f.label :date_and_time, "Event date/time"
+      = f.label :date_and_time, "Begin date/time"
     %td
       = f.datetime_select :date_and_time
+  %tr.top
+    %td
+      = f.label :end_date_and_time, "End date/time"
+    %td
+      = f.datetime_select :end_date_and_time
   %tr.top
     %td
       Material Categories

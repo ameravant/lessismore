@@ -5,7 +5,11 @@
   %h2 Date and Time
   .big
     = soon_indicator(@event.date_and_time, '', true) if @event.future?
+    %h2 Start
     %div= @event.date_and_time.strftime("%A, %B %d, %Y at %I:%M %p %Z")
+    -if @event.end_date_and_time
+      %h2 End
+      %div= @event.end_date_and_time.strftime("%A, %B %d, %Y at %I:%M %p %Z")
 
   / Registration link
   - if @event.future? and @event.registration?
