@@ -29,6 +29,9 @@
   = f.label :introduction_banner_image, "Upload an image for the welcome banner."
   = f.file_field :introduction_banner_image
   %span optional
+  %br
+  = f.label :introduction_banner_title
+  = f.text_field :introduction_banner_title, :style => "padding:0px;"
 
 %p
   = f.label :instruction
