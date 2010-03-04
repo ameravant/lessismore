@@ -17,11 +17,9 @@
 - unless @material.description.blank?
   = @material.description
 
-- if @locations.empty?
-  %h2 Sorry, but there are no locations that accept this material
-- else
+- if !@locations.empty?
   %h2== Where to go
-= render :partial => 'location_list'
+  = render :partial => 'location_list'
 
 - content_for :side_column do
   - unless @material.events.blank?
