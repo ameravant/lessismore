@@ -5,7 +5,8 @@
       %li=link_to "Contact Us", "/contact-us"
   -unless @sub_pages.blank?
     -for subpage in @sub_pages
-      %li= link_to subpage.title, subpage if subpage.status != "hidden"
+      -if subpage.status != "hidden"
+        %li= link_to subpage.title, subpage 
   -unless @sub_materials.blank?
     -for sub_material in @sub_materials
       -if sub_material.in_sub_menu
