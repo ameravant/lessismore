@@ -134,7 +134,8 @@ a img { border: 0; }
 
 #search {
   float: right;
-  display: block; }
+  display: block; 
+  width: 240px; }
 
 #admin_menu {
   list-style: none;
@@ -232,7 +233,7 @@ body { background: url(../images/cardboard.jpg) repeat center top; padding: 0; m
   	    #logo a { display: block; width: 100%; height: 100%; }
   	    #logo span { display: block; text-indent: -9999px; }
   	  #search-form fieldset { border: 0; margin: 0; padding: 0; }
-  	    #q { border: 0px; margin: 36px 0 0 0; background: transparent; height: 28px; }
+  	    #q { border: 0px; margin: 36px 0 0 0; background: transparent; height: 28px; width: 180px; }
   	    #search-submit { width: 46px; height: 40px; margin-top: -5px; position: relative; background: transparent; border: 0; }
   	#wrapper-middle { background:url(../images/folder-bg.gif) repeat-y center top; }
   		#menu { height: 36px; font-family: Tahoma, Arial, sans-serif; text-transform: uppercase; font-size: .8em;  }
@@ -246,7 +247,7 @@ body { background: url(../images/cardboard.jpg) repeat center top; padding: 0; m
   			#menu.events { background: url(../images/menu-sprite.gif) no-repeat center -252px; }
   		#menu ul { margin: 0; padding: 0; height: 36px; width: 876px; margin: 0 auto; list-style: none; }
   			#menu ul li { float: left; }
-  				#menu ul li.selected a { font-size: 1.1em; color: #52504a; }
+  				#menu ul li.selected a { font-size: 1.1em; color: #52504a; font-weight: bold; }
   				#menu ul a { display: block; float: left; overflow: hidden; line-height: 30px; text-decoration: none; color: #686761 !important; margin-top: 6px; }
   					#menu ul a:hover { color: #8e8b82 !important; background: none !important; }
   					#menu ul a.home { width: 79px; }
@@ -269,8 +270,8 @@ body { background: url(../images/cardboard.jpg) repeat center top; padding: 0; m
   				#content-main { margin: 0 auto; width: 799px; min-height: 800px; }
       			#main-column.with-side-column { width: 460px; float: left; margin: 0 20px 0 0; overflow: hidden; }
     				#side-column { float: left; width: 290px; padding: 0 0 0 20px; border-left: #D4D0C4 2px solid; }
-  				#crumb { float: left; width: 500px; text-indent: 40px; margin: 0; }
-  				#espanol { float: right; width: 100px; }
+  				#crumb { float: left; width: 650px; text-indent: 40px; margin: 0; }
+  				#espanol { float: right; width: 100px; padding-right: 40px; text-align: right; }
   			  #footer { margin: 50px auto 0; width: 799px; }
   			    #footer #footer-left-column { width: 460px; float: left; margin: 0 20px 0 0; }
   			    #footer #footer-right-column { float: left; width: 290px; margin: 0 0 0 20px; }
