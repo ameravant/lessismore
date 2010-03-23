@@ -47,7 +47,7 @@
     = "- "
     = @event.material_categories.reject { |c| }.map { |c| link_to(h(c.name), c, :class => "#{c.css_class} material-category") }.join(", ")
 %div
-= simple_format(ninja_parse(@event.description))
+= ninja_parse(@event.description)
 
 - if @event.future? and @event.registration? and @event.registration_spots?
   %br
