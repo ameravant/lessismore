@@ -74,7 +74,7 @@
           %ul
             %li{:class => (@page and @page.permalink == "home" ? "selected" : "unselected")}= link_to("Home", root_path, :class => "home")
             - for mc in @material_categories_for_menu.sort_by(&:id)
-              %li{:class => (@material_category ? (@material_category.permalink == mc.permalink ? "selected" : "unselected") : "unselected")}= link_to(h(mc.name), mc, :class => "#{mc.permalink}")
+              %li{:class => "#{(@material_category ? (@material_category.permalink == mc.permalink ? "selected" : "unselected") : "unselected")} #{mc.permalink}"}= link_to(h(mc.name), mc, :class => "#{mc.permalink}")
             %li{:class => (@page and @page.permalink == "events" ? "selected" : "unselected")}= link_to("Events", events_path, :class => "events")
           = clear
       #wrapper-middle
@@ -85,7 +85,7 @@
             #content-top
               - if @breadcrumbs
                 #crumb= @breadcrumbs.map { |txt, path| link_to_unless(path.blank?, h(txt), path) }.join(" > ")
-                #espanol= link_to("Espa&#241;ol","http://translate.google.com/translate?js=y&prev=_t&hl=en&ie=UTF-8&layout=1&eotf=1&u=http://#{request.domain}#{request.request_uri}")
+                #espanol= link_to("Espa&#241;ol","http://translate.google.com/translate?hl=en&sl=en&tl=es&u=http://#{request.domain}#{request.request_uri}")
               = clear
             #content-main
               = flash_div

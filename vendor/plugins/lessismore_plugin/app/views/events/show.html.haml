@@ -2,15 +2,8 @@
   = @event.name
 
 - content_for :side_column do
-  %h2 Date and Time
-  .big
-    = soon_indicator(@event.date_and_time, '', true) if @event.future?
-    %h2 Start
-    %div= @event.date_and_time.strftime("%A, %B %d, %Y at %I:%M %p %Z")
-    -if @event.end_date_and_time
-      %h2 End
-      %div= @event.end_date_and_time.strftime("%A, %B %d, %Y at %I:%M %p %Z")
-
+  = soon_indicator(@event.date_and_time, '', true) if @event.future?
+  
   / Registration link
   - if @event.future? and @event.registration?
     %h2 Registration
@@ -34,24 +27,26 @@
     %div= h @event.address
     #google_map
     %div= link_to "View larger map", "http://maps.google.com?q=#{u @event.address}"
-
+  -unless @event.materials.blank?
+    %h2 Related Materials
+    %ul.items-for-list
+      -for material in @event.materials
+        %li= link_to(material.name, material)
   / More events
   - unless @event.registration? or @latest_events.empty?
     %h2 More events
     %ul.items-for-list
       = render :partial => @latest_events
-  -unless @event.material_categories.blank?
-    %h2 Material Categories
-    .big
-      = link_to(@event.material_categories.first.name, @event.material_categories.first, :class => "#{@event.material_categories.first.css_class} material-for-item-list")
-  -unless @event.materials.blank?
-    %h2 Related Materials
-    .big
-      -for material in @event.materials
-        = link_to(material.name, material)
 
 %h1= yield(:meta_title).strip
-
+.date
+  = @event.date_and_time.strftime("%B %d, %Y at %I:%M%p %Z")
+  - if @event.end_date_and_time
+    == &mdash; #{@event.end_date_and_time.strftime("%B %d, %Y at %I:%M%p %Z")}
+  - unless @event.material_categories.empty?
+    = "- "
+    = @event.material_categories.reject { |c| }.map { |c| link_to(h(c.name), c, :class => "#{c.css_class} material-category") }.join(", ")
+%div
 = simple_format(ninja_parse(@event.description))
 
 - if @event.future? and @event.registration? and @event.registration_spots?

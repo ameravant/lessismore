@@ -27,21 +27,7 @@
       = f.label :end_date_and_time, "End date/time"
     %td
       = f.datetime_select :end_date_and_time
-  %tr.top
-    %td
-      Material Categories
-    %td
-      - for material_category in @material_categories
-        %span.article_category_checkbox
-          = check_box_tag "event[material_category_ids][]", material_category.id, @event.material_categories.include?(material_category), :id => dom_id(material_category)
-          = label_tag dom_id(material_category), "#{material_category.name}"
-  %tr.top
-    %td= f.label :material_ids, "Materials"
-    %td{:class => "article_materials" }
-      - for material in @materials
-        %span.article_category_checkbox
-          = check_box_tag "event[material_ids][]", material.id, @event.materials.include?(material), :id => dom_id(material)
-          = label_tag dom_id(material), "#{material.name}"
+
   =clear
 %br
 - if @cms_config['features']['event_registration']
@@ -94,12 +80,26 @@
           Let registrants know what to do with the check, whether they need to mail it
           to a specific address or bring it to the event.
         = f.text_area :check_instructions, :size => "60x8"
-      /check-payment-options
-    /payments-allowed
+
 %br
 %h2
   Description
 = f.text_area :description, :size => "80x30", :class => "mceEditor"
+
+- @materials.group_by(&:material_category).each do |material_category, materials|
+  %p{:class => "#{material_category.css_class}"}
+    = check_box_tag "event[material_category_ids][]", material_category.id, @event.material_categories.include?(material_category), :id => dom_id(material_category)
+    = label_tag dom_id(material_category), "#{material_category.name}"
+  - for material in materials
+    %div[material]
+      = check_box_tag "event[material_ids][]", material.id, @event.materials.include?(material), :id => "check_box_#{dom_id material}"
+      %label{:for => "check_box_#{dom_id material}"}
+        - if material.name.size > 18
+          %abbr{:title => h(material.name)}= truncate h(material.name), :length => 18
+        - else
+          = h material.name
+  = clear
+
 - fancy_submit admin_events_path do
   = f.submit "Save event"
 

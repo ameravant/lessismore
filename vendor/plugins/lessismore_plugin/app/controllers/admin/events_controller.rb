@@ -5,7 +5,7 @@ class Admin::EventsController < AdminController
   # Configure breadcrumb
   add_breadcrumb "Events", "admin_events_path", :except => :index
   add_breadcrumb "New", nil, :only => [ :new, :create ]
-  add_breadcrumb "@event.name", nil, :only => [ :edit, :update ]
+  
 
   def index
     if params[:q].blank?
@@ -26,6 +26,7 @@ class Admin::EventsController < AdminController
   end
 
   def edit
+    add_breadcrumb @event.name, nil
     @materials = Material.all
     @material_categories = MaterialCategory.all
   end
