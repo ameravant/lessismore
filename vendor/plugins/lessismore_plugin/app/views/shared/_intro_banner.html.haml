@@ -8,7 +8,7 @@
   -current.css_class = @material_category.css_class
 %div.intro-box{:class => "#{current.css_class}_background"}
   -if tmp.introduction_banner_image_file_name
-    = image_tag(tmp.introduction_banner_image(:intro), :alt => tmp.introduction_banner_title)
+    = image_tag(tmp.introduction_banner_image(:intro), :alt => tmp.introduction_banner_title, :id => "intro-box-image")
     -#%img{:src=> "#{$DOMAIN_PATH.strip.gsub!(/\/$/, "")}" + "#{@settings.introduction_banner_image(:large)}"}
   -elsif current.introduction_banner_image_file_name
     = image_tag(current.introduction_banner_image(:intro), :alt => current.introduction_banner_title)

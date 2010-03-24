@@ -2,9 +2,7 @@
   = @event.name
 
 - content_for :side_column do
-  = soon_indicator(@event.date_and_time, '', true) if @event.future?
-  
-  / Registration link
+  - # Registration link
   - if @event.future? and @event.registration?
     %h2 Registration
     - if @event.registration_spots?
@@ -19,7 +17,7 @@
       - else
         = auto_link(h @event.registration_closed_text)
 
-  / Map and address
+  - # Map and address
   - unless @event.address.blank?
     %h2 Location
     - content_for :head do
@@ -32,7 +30,7 @@
     %ul.items-for-list
       -for material in @event.materials
         %li= link_to(material.name, material)
-  / More events
+  - # More events
   - unless @event.registration? or @latest_events.empty?
     %h2 More events
     %ul.items-for-list
