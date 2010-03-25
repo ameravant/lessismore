@@ -1,5 +1,4 @@
-lass Article < ActiveRecord::Base
-  has_and_belongs_to_many :material_categories
+class Article < ActiveRecord::Base
   has_permalink :title
   acts_as_taggable
   has_and_belongs_to_many :article_categories

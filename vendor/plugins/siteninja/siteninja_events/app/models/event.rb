@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
   validates_presence_of :registration_closed_text, :if => :registration_limit?
   validates_presence_of :registration, :if => :allow_check_or_cash?, :message => "must be required if you accept cash or check payment"
   validates_presence_of :check_instructions, :if => :allow_check?, :message => "must be provided to the registrant"
-  named_scope :future, lambda { { :conditions => ["date_and_time >= ?", Date.today.to_time] }, :order => "date_and_time" } 
+  named_scope :future, lambda {:conditions => ["date_and_time >= ?", Date.today.to_time], :order => "date_and_time" } 
   named_scope :this_week, lambda { { :conditions => { :date_and_time => (Date.today.to_time..(Date.today + 6).to_time) } } }
   named_scope :this_month, lambda { { :conditions => { :date_and_time => (Date.today.to_time..(Date.today + 29).to_time)  } } }
   named_scope :three_months, lambda { { :conditions => { :date_and_time => (Date.today.to_time..(Date.civil(Date.today.year, Date.today.month, 1) >> 3).to_time)  } } }

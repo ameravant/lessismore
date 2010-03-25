@@ -15,7 +15,7 @@ Rails::Initializer.run do |config|
   else
     config.action_mailer.default_url_options = { :host => "localhost:3000" }
   end
-  config.plugins = [:lessismore_plugin, :all]
+  config.plugins = [:all, :lessismore_plugin]
 end
 require 'hirb'
 Hirb.enable

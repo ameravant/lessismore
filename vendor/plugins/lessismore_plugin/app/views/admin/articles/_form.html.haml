@@ -23,14 +23,6 @@
         %span.article_category_checkbox
           = check_box_tag "article[article_category_ids][]", article_category.id, @article.article_categories.include?(article_category), :id => dom_id(article_category)
           = label_tag dom_id(article_category), "#{article_category.name}"
-  %tr.top
-    %td{:class => (!@article.new_record? and @article.article_categories.active.count == 0 ? "bold red" : nil)}= f.label :material_category_ids, "Material Category"
-    %td
-      - for material_category in @material_categories
-        %span.article_category_checkbox
-          = check_box_tag "article[material_category_ids][]", material_category.id, @article.material_categories.include?(material_category), :id => dom_id(material_category)
-          = label_tag dom_id(material_category), "#{material_category.name}"
-      = clear
   %tr
     %td= f.label :description, "Short Description"
     %td= f.text_field :description, :size => 60
@@ -62,7 +54,9 @@
   = f.label :notify_author_of_comments, "Notify me when comments are posted for this article"
   %h2 Materials accepted
 - @materials.group_by(&:material_category).each do |material_category, materials|
-  %p{:class => "#{material_category.css_class}"}= h material_category.name
+  %p{:class => "#{material_category.css_class}"}
+    = check_box_tag "article[material_category_ids][]", material_category.id, @article.material_categories.include?(material_category), :id => dom_id(material_category)
+    = label_tag dom_id(material_category), "#{material_category.name}"
   - for material in materials
     %div[material]
       = check_box_tag "article[material_ids][]", material.id, @article.materials.include?(material), :id => "check_box_#{dom_id material}"
