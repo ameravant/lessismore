@@ -32,11 +32,6 @@
         = asset.file_file_name
 = render :partial => "/shared/sharethis"
 
-= clear
-- unless @article.materials.empty?
-  %h2 Materials
-  -for material in @article.materials
-    =link_to material.name, material
 - unless @article.comments.empty?
   %h2#comments_list Comments
   #comments
