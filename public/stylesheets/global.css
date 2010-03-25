@@ -84,8 +84,8 @@ a.hazardous_waste:hover {
   color: #A37E0F !important; }
 
 a.trash:hover {
-  color: #A37E0F !important;
-  background-color: #666666 !important; }
+  background-color: #A37E0F !important;
+  color: #fff !important; }
 
 .trash_background {
   background-color: #968246 !important; }
@@ -210,7 +210,7 @@ label:hover {
   margin-bottom: 1em; }
 
 .description { font-size: .8em; }
-
+h1#article-title { text-decoration: none; }
 .articles-for-list { margin: 0; padding: 0; }
 
 .items-for-list { list-style: none; margin: 0; padding: 0; }
@@ -236,28 +236,39 @@ body { background: url(../images/cardboard.jpg) repeat center top; padding: 0; m
   	    #q { border: 0px; margin: 36px 0 0 0; background: transparent; height: 28px; width: 180px; }
   	    #search-submit { width: 46px; height: 40px; margin-top: -5px; position: relative; background: transparent; border: 0; }
   	#wrapper-middle { background:url(../images/folder-bg.png) repeat-y center top; }
-  		#menu { height: 36px; font-family: Tahoma, Arial, sans-serif; text-transform: uppercase; font-size: .8em;  }
-  			#menu.home { background: url(../images/menu-sprite.gif) no-repeat center top; }
-  			#menu.recycle { background: url(../images/menu-sprite.gif) no-repeat center -36px; }
-  			#menu.reduce-reuse { background: url(../images/menu-sprite.gif) no-repeat center -72px; }
-  			#menu.yard-waste { background: url(../images/menu-sprite.gif) no-repeat center -108px; }
-  			#menu.hazardous-waste { background: url(../images/menu-sprite.gif) no-repeat center -144px; }
-  			#menu.electronics { background: url(../images/menu-sprite.gif) no-repeat center -180px; }
-  			#menu.trash { background: url(../images/menu-sprite.gif) no-repeat center -216px; }
-  			#menu.events { background: url(../images/menu-sprite.gif) no-repeat center -252px; }
-  		#menu ul { margin: 0; padding: 0; height: 36px; width: 876px; margin: 0 auto; list-style: none; }
-  			#menu ul li { float: left; }
-  				#menu ul li.selected a { font-size: 1.1em; color: #52504a; font-weight: bold; }
-  				#menu ul a { display: block; float: left; overflow: hidden; line-height: 30px; text-decoration: none; color: #686761 !important; margin-top: 6px; }
-  					#menu ul a:hover { color: #8e8b82 !important; background: none !important; }
-  					#menu ul a.home { width: 79px; }
-  					#menu ul a.recycle { width: 82px; }
-  					#menu ul a.reduce-reuse { width: 142px; }
-  					#menu ul a.yard-waste { width: 120px; }
-  					#menu ul a.hazardous-waste { width: 164px; }
-  					#menu ul a.electronics { width: 119px; }
-  					#menu ul a.trash { width: 72px; }
-  					#menu ul a.events { width: 84px; }
+	 #menu * {margin:0;padding:0;}  
+/*The Menu-spriteNEW.png (6kb) replace menu-sprite.gif (110k)*/
+  		#menu {height: 36px; font-family: Tahoma, Arial, sans-serif; text-transform: uppercase; font-size: .8em; background: url(http://dl.dropbox.com/u/442561/LessIsMoreOptimization/menu-sprite.png) no-repeat center -72px;}
+/* removed "a"*/ 		
+		
+  			#menu.home ul li.selected {background: transparent url(http://dl.dropbox.com/u/442561/LessIsMoreOptimization/menu-sprite.png) no-repeat 0px 0px;}
+  			#menu.recycle ul li.selected {background: transparent url(http://dl.dropbox.com/u/442561/LessIsMoreOptimization/menu-sprite.png) no-repeat -79px -36px;}
+  			#menu.reduce-reuse ul li.selected {background: transparent url(http://dl.dropbox.com/u/442561/LessIsMoreOptimization/menu-sprite.png) no-repeat -161px -0px;}
+  			#menu.yard-waste ul li.selected {background: transparent url(http://dl.dropbox.com/u/442561/LessIsMoreOptimization/menu-sprite.png) no-repeat -303px -36px;}
+  			#menu.hazardous-waste ul li.selected {background: transparent url(http://dl.dropbox.com/u/442561/LessIsMoreOptimization/menu-sprite.png) no-repeat -423px -0px;}
+  			#menu.electronics ul li.selected {background: transparent url(http://dl.dropbox.com/u/442561/LessIsMoreOptimization/menu-sprite.png) no-repeat -587px -36px;}
+  			#menu.trash ul li.selected {background: transparent url(http://dl.dropbox.com/u/442561/LessIsMoreOptimization/menu-sprite.png) no-repeat -706px -0px;}
+  			#menu.events ul li.selected {background: transparent url(http://dl.dropbox.com/u/442561/LessIsMoreOptimization/menu-sprite.png) no-repeat -778px -36px}
+ 		#menu ul {padding: 0; height: 36px; width: 876px; margin: 0 auto; list-style: none; position:relative;}
+/***Something about the position absolute on the li is making it move ***/  
+
+/****** Jeff Changes ******/
+			#menu ul li.selected a { font-size: 1.1em; color: #52504a; font-weight: bold; }
+			/*Added */#menu ul li.selected a:hover {color: #8e8b82 !important; background: transparent !important;}
+  				#menu ul li a { display: block; overflow: hidden; line-height: 30px; text-decoration: none; color: #686761 !important; padding-top: 6px;}
+
+				
+				#menu ul li.unselected a:hover { color: #8e8b82 !important; background: transparent !important}
+#menu ul li {position:absolute;}
+				/* New style with list items instead */
+					#menu ul li.home, #menu ul li.home a{ 	 	width: 103px; 	left:-12px;}
+  					#menu ul li.recycle, #menu ul li.recycle a{ 		width: 106px; 	left:67px;}
+  					#menu ul li.reduce-reuse, #menu ul li.reduce-reuse a{ 	width: 166px; 	left:149px;}
+  					#menu ul li.yard-waste, #menu ul li.yard-waste a{ 	width: 144px; 	left:291px;}
+  					#menu ul li.hazardous-waste { width: 188px;left:411px;}
+  					#menu ul li.electronics {	width: 143px; 	left:575px}
+  					#menu ul li.trash { 		width: 96px; 	left:694px}
+  					#menu ul li.events { 		width: 108px; 	left:766px}
   		#wrapper-inner { background: url(../images/folder-top.png) no-repeat center top; }
   			#submenu ul { margin: 0; padding: 0; height: 27px; list-style: none; width: 880px; margin: 0 auto; padding: 7px 0 0; overflow: hidden; white-space: nowrap; list-style: none; }
   				#submenu li { margin: 0 20px 0 0; float: left; font-size: .75em; padding: 0 0 20px 0; }
@@ -350,7 +361,7 @@ span.trash-icon {
 .intro-box a:visited{color:#F8F3ED; text-decoration:none} 
 .intro-box a:hover{color:#FFF; text-decoration:underline}
 
-#intro-box-image { float: right; margin: -25px -32px 0 0; }
+#intro-box img { float: right; margin: -25px -32px 0 0; }
 
 .intro-box h1 {
 	color:#F0E4C7;
@@ -410,3 +421,4 @@ padding:2px 5px;
 
 .inline-list { list-style: none; margin: 0; padding: 0; }
   .inline-list li { margin: 0 10px 0 0; float: left; display: block; }
+.no_underline { text-decoration: none; }

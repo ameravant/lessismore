@@ -3,7 +3,7 @@
 
 = render :partial => "sidebar"
 
-%h1= link_to yield(:meta_title), @article, :class => "no_underline"
+%h1#article-title= link_to yield(:meta_title), @article, :class => "no_underline"
 
 = error_messages_for "comment", :header_message => "Your comment could not be posted!", :message => nil
 

@@ -72,10 +72,10 @@
       -if !@admin
         #menu{:class => (@material_category ? @material_category.permalink : (  @page.permalink == "events" ? "events" : "home"))}
           %ul
-            %li{:class => (@page and @page.permalink == "home" ? "selected" : "unselected")}= link_to("Home", root_path, :class => "home")
+            %li{:class => (@page and @page.permalink == "home" ? "selected home" : "unselected home")}= link_to("Home", root_path)
             - for mc in @material_categories_for_menu.sort_by(&:id)
-              %li{:class => "#{(@material_category ? (@material_category.permalink == mc.permalink ? "selected" : "unselected") : "unselected")} #{mc.permalink}"}= link_to(h(mc.name), mc, :class => "#{mc.permalink}")
-            %li{:class => (@page and @page.permalink == "events" ? "selected" : "unselected")}= link_to("Events", events_path, :class => "events")
+              %li{:class => "#{(@material_category ? (@material_category.permalink == mc.permalink ? "selected" : "unselected") : "unselected")} #{mc.permalink}"}= link_to(h(mc.name), mc)
+            %li{:class => (@page and @page.permalink == "events" ? "selected events" : "unselected events")}= link_to("Events", events_path)
           = clear
       #wrapper-middle
         #wrapper-inner
