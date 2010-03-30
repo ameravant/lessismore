@@ -226,6 +226,7 @@ form {
 body { background: url(../images/cardboard.jpg) repeat center top; padding: 0; margin: 0; font-family: Tahoma, Arial, sans-serif; color: #333; }
   a { color: #386281; }
   	a:hover { color: #2c4159; }
+  #skip-to-content { display: none; visibility: hidden; }
   #header, #content { width: 870px; margin: 0 auto; }
   #wrapper-outer { background: url(../images/cardboard-top.jpg) repeat-x center top; text-align: center; }
   	#header { height: 114px; background: url(../images/lessismore.gif) no-repeat center; margin: 0 auto;}
@@ -234,7 +235,7 @@ body { background: url(../images/cardboard.jpg) repeat center top; padding: 0; m
   	    #logo span { display: block; text-indent: -9999px; }
   	  #search-form fieldset { border: 0; margin: 0; padding: 0; }
   	    #q { border: 0px; margin: 36px 0 0 0; background: transparent; height: 28px; width: 180px; }
-  	    #search-submit { width: 46px; height: 40px; margin-top: -5px; position: relative; background: transparent; border: 0; }
+  	    #search-submit { width: 46px; height: 40px; margin-top: -5px; position: relative; background: transparent; border: 0; cursor: pointer; }
   	#wrapper-middle { background:url(../images/folder-bg.png) repeat-y center top; }
 	 #menu * {margin:0;padding:0;}  
 /*The Menu-spriteNEW.png (6kb) replace menu-sprite.gif (110k)*/
@@ -281,6 +282,7 @@ body { background: url(../images/cardboard.jpg) repeat center top; padding: 0; m
   				#content-main { margin: 0 auto; width: 799px; min-height: 800px; }
       			#main-column.with-side-column { width: 460px; float: left; margin: 0 20px 0 0; overflow: hidden; }
     				#side-column { float: left; width: 290px; padding: 0 0 0 20px; border-left: #D4D0C4 2px solid; }
+    				  #side-column address { font-style: normal; margin: 10px 0; font-size: .9em; }
   				#crumb { float: left; width: 650px; text-indent: 40px; margin: 0; }
   				#espanol { float: right; width: 100px; padding-right: 40px; text-align: right; }
   			  #footer { margin: 50px auto 0; width: 799px; }
@@ -294,8 +296,7 @@ body { background: url(../images/cardboard.jpg) repeat center top; padding: 0; m
   			      #footer address { font-style: normal; }
   			    #footer img { margin: 20px 0 0 10px; }
   			#content-bottom { background:url(../images/folder-bottom.png) no-repeat center top; height: 79px; }
-  			
-
+.list-of-materials { list-style: none; margin: 0 0 0 30px; padding: 0; }
 .city h3 {
 	width: auto;
 	display: inline;

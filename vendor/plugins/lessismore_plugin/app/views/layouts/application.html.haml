@@ -63,6 +63,7 @@
       = yield :onload
       });
   %body{ :onload => (@content_for_onload ? yield(:onload).strip : nil), :onunload => (@content_for_onunload ? yield(:onunload).strip : nil) }
+    = link_to("Skip to content", "#main-column", :id => "skip-to-content", :title => "Skip to content")
     #wrapper-outer
       = render :partial => "/layouts/admin_menu" if logged_in?
       = clear
@@ -85,7 +86,7 @@
             #content-top
               - if @breadcrumbs
                 #crumb= @breadcrumbs.map { |txt, path| link_to_unless(path.blank?, h(txt), path) }.join(" > ")
-                #espanol= link_to("Espa&#241;ol","http://translate.google.com/translate?hl=en&sl=en&tl=es&u=http://#{request.domain}#{request.request_uri}")
+              #espanol= link_to("Espa&#241;ol","http://translate.google.com/translate?hl=en&sl=en&tl=es&u=http://#{request.domain}#{request.request_uri}")
               = clear
             #content-main
               = flash_div

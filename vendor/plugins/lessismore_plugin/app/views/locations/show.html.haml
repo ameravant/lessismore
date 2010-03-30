@@ -5,9 +5,11 @@
 
 - content_for :side_column do
   #map_canvas
-%h1= yield :title
-- unless @location.blank? 
-  .description
+  %address
+    -unless @location.full_address_sans_zip.blank?
+      %strong Address:
+      = h @location.full_address_sans_zip
+      %br
     -unless @location.phone.blank?
       %strong Phone: 
       =@location.phone
@@ -19,19 +21,18 @@
     -unless @location.email.blank?
       %strong Email:
       =mail_to @location.email
-      %br
+%h1= yield :title
+- unless @location.blank? 
+  .description
     =@location.description
-    %address
-      -unless @location.full_address_sans_zip.blank?
-        %strong Address
-        = h @location.full_address_sans_zip
-        %br
+    
 %h2 Materials accepted
 .materials
   - if @materials.empty?
     %h2 This location does not accept materials.
   - else
     -@materials.sort_alphabetically_by_material_category.each do |category, materials|
-      %h3= category
-      = render :partial => 'materials/material', :collection => materials
+      %h3{:class => "#{materials.first.material_category.css_class}"}= category
+      %ul.list-of-materials
+        = render :partial => 'materials/material', :collection => materials
 
