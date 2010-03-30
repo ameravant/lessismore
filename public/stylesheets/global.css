@@ -303,6 +303,10 @@ body { background: url(../images/cardboard.jpg) repeat center top; padding: 0; m
 }
 .city {
 	list-style-type: none;
+	font-size: .8em;
+	line-height: 2em; 
+	margin: 0 0 0 20px;
+	padding: 0;
 }
 h3 span.js-arrow {
   background: url(../images/js_arrow.png) no-repeat 0px -14px;
