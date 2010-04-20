@@ -18,7 +18,7 @@
 - else
   =# will_paginate @locations unless @locations.total_pages == 1
   %ul.city
-    - @locations.group_by(&:region_name).each do |region, region_locations|
+    - @locations.sort_by(&:region_name).group_by(&:region_name).each do |region, region_locations|
       %li
         %h3{:id => region}
           = h region
@@ -30,4 +30,3 @@
               = link_to h(location.name), edit_admin_location_path(location)
               = "&mdash; #{location.address}"
               = link_to_remote image_tag("/images/icons/gray/16x16/Trash.png", :id => "delete_icon_#{location.id}"), :url => admin_location_path(location), :method => :delete, :success => "$('delete_icon_#{location.id}').src = '/images/spinner.gif'", :confirm => "Really delete this location?"
-
