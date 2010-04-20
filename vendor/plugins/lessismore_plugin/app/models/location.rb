@@ -1,5 +1,5 @@
 class Location < ActiveRecord::Base
-  include Geokit::Geocoders
+  #include Geokit::Geocoders
 
   has_permalink :name
   has_and_belongs_to_many :materials
@@ -10,7 +10,7 @@ class Location < ActiveRecord::Base
   validates_numericality_of :zip, :message => "must be a 5 digit number", :allow_blank => true
   validates_length_of :zip, :is => 5, :message => "must be a 5 digit number", :allow_blank => true
   validates_numericality_of :lat, :lng, :allow_blank => true
-  before_validation :replace_with_geokit_address, :if => :record_changed?
+  #before_validation :replace_with_geokit_address, :if => :record_changed?
   named_scope :by_name, :order => "name"
   default_scope :order => "state, city"
   belongs_to :region
@@ -58,27 +58,27 @@ class Location < ActiveRecord::Base
 
   private
 
-  def record_changed?
-    self.changed?
-  end
-
-  def replace_with_geokit_address
-    # Uses Geokit plugin to get full address and coordinates for the newly added
-    # location. Replacees all given data with geokit's data.
-    geo = MultiGeocoder.geocode(self.full_address)
-    self.attributes = {
-      :address          => geo.street_address,
-      :city             => geo.city,
-      :state            => geo.state,
-      :zip              => geo.zip,
-      :lat              => geo.lat,
-      :lng              => geo.lng,
-      :geokit_provider  => geo.provider,
-      :geokit_precision => geo.precision,
-      :geokit_accuracy  => geo.accuracy,
-      :geokit_success   => true
-    } if geo.success
-  end
-
+  # def record_changed?
+  #    self.changed?
+  #  end
+  # 
+  #  def replace_with_geokit_address
+  #     # Uses Geokit plugin to get full address and coordinates for the newly added
+  #     # location. Replacees all given data with geokit's data.
+  #     geo = MultiGeocoder.geocode(self.full_address)
+  #     self.attributes = {
+  #       :address          => geo.street_address,
+  #       :city             => geo.city,
+  #       :state            => geo.state,
+  #       :zip              => geo.zip,
+  #       :lat              => geo.lat,
+  #       :lng              => geo.lng,
+  #       :geokit_provider  => geo.provider,
+  #       :geokit_precision => geo.precision,
+  #       :geokit_accuracy  => geo.accuracy,
+  #       :geokit_success   => true
+  #     } if geo.success
+  #   end
+ 
 end
 

@@ -7,7 +7,7 @@ unloadable
 
   def index
     add_breadcrumb "Locations"
-    @locations = Location.by_name.paginate :page => params[:page], :per_page => 50
+    @locations = Location.by_name
   end
 
   def new
