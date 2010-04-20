@@ -4,7 +4,7 @@ class LocationsController < ApplicationController
 
   def index
     add_breadcrumb "Locations"
-    @locations = Location.all
+    @locations = Location.by_name
     @page = Page.find_by_permalink("locations")
     @sub_pages = Page.find(:all, :conditions => {:parent_id => @page.parent_id, :status => 'visible', :can_delete => true })
   end
