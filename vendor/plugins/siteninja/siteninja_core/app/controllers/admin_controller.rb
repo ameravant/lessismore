@@ -16,6 +16,7 @@ class AdminController < ApplicationController
     :external_image_list_url => "/tinymce/generate_images_list",
     :external_link_list_url => "/tinymce/generate_links_list",
     :relative_urls => false,
+    :convert_urls => false,
     :width => "850px",
     :content_css => "/stylesheets/tinymce.css" }
 
