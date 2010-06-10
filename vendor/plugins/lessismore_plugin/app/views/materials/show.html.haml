@@ -28,8 +28,9 @@
       = render :partial => @material.events.future
   - unless @material.related_materials.blank?
     %h2 Related Materials
-    -for rel_material in @material.related_materials
-      =link_to rel_material.name, rel_material
+    %ul.items-for-list
+      -for rel_material in @material.related_materials
+        %li=link_to rel_material.name, rel_material
   - unless @material.articles.blank?
     %h2 Related Articles
     %ul.items-for-list

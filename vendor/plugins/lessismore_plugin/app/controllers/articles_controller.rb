@@ -34,6 +34,7 @@ class ArticlesController < ApplicationController
     @comment = Comment.new
     @comment.email = current_user.email if logged_in?
     @images = @article.images
+    @sub_articles = Article.all
     add_breadcrumb 'Articles', 'blog_path'
     add_breadcrumb @article.title
   end
