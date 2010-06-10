@@ -1,6 +1,7 @@
 %ul#articles.items-for-list
   = render :partial => @articles
 - content_for :side_column do
-  %h2 Upcoming Events
-  %ul.items-for-list
-    = render :partial => @events
+  -if @events
+    %h2 Upcoming Events
+    %ul.items-for-list
+      = render :partial => @events
