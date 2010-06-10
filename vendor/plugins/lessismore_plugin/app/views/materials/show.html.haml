@@ -22,7 +22,7 @@
   = render :partial => 'location_list'
 
 - content_for :side_column do
-  - unless @material.events.size < 1
+  - if !@material.events.reject{|e| !e.future?}.empty?
     %h2 Related Events
     %ul.items-for-list
       = render :partial => @material.events.future
