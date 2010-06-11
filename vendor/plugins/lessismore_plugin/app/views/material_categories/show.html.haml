@@ -1,4 +1,4 @@
-- content_for :title do
+- content_for :meta_title do
   = h @material_category.name
 - content_for :instruction do
   = render :partial => "shared/intro_banner", :locals => { :show_category_name => false, :current => @material_category }
