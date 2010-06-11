@@ -3,7 +3,7 @@
 %html{:xmlns => "http://www.w3.org/1999/xhtml"}
   %head
   %meta{'http-equiv' => "Content-type", :content => "text/html; charset=utf-8"}
-  %title= @content_for_meta_title.blank? ? @cms_config['website']['name'] : "#{yield(:meta_title).strip} - #{@cms_config['website']['name']}"
+  %title= @content_for_title.blank? ? @cms_config['website']['name'] : "#{yield(:title).strip} - #{@cms_config['website']['name']}"
   - unless @content_for_meta_description.blank?
     %meta{:name => "description", :content => yield(:meta_description).strip }
   - # This rather lengthy section of the head includes all javascripts and stylesheets used throughout the application, included depending upon specific conditions of the view
