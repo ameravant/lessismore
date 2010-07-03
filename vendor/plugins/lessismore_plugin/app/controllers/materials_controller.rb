@@ -1,4 +1,5 @@
 class MaterialsController < ApplicationController
+unloadable
   def show
     @material = Material.find params[:id]
     @material_category = @material.material_category
@@ -13,6 +14,10 @@ class MaterialsController < ApplicationController
   end
   def index
     @materials = Material.all
+    @page = Page.find_by_permalink("home")
+    @sub_pages = Page.find(:all, :conditions => {:parent_id => @page.id})
+    add_breadcrumb "Home", "/"
+    add_breadcrumb "All materials"
   end
 end
 
