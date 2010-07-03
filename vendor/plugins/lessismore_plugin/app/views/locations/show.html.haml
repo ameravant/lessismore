@@ -1,4 +1,4 @@
-- render :partial => "/layouts/google_map", :locals => { :lat => @location.lat, :lng => @location.lng, :zoom => 13 }
+- render :partial => "/layouts/google_map", :locals => { :lat => @location.lat, :lng => @location.lng, :zoom => 13, :map_link => @location.map_link}
 
 - content_for :meta_title do
   = h @location.name
