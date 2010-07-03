@@ -239,17 +239,17 @@ body { background: url(../images/cardboard.jpg) repeat center top; padding: 0; m
   	#wrapper-middle { background:url(../images/folder-bg.png) repeat-y center top; }
 	 #menu * {margin:0;padding:0;}  
 /*The Menu-spriteNEW.png (6kb) replace menu-sprite.gif (110k)*/
-  		#menu {height: 36px; font-family: Tahoma, Arial, sans-serif; text-transform: uppercase; font-size: .8em; background: url(http://dl.dropbox.com/u/442561/LessIsMoreOptimization/menu-sprite.png) no-repeat center -72px;}
+  		#menu {height: 36px; font-family: Tahoma, Arial, sans-serif; text-transform: uppercase; font-size: .8em; background: url(../images/menu-sprite.png) no-repeat center -72px;}
 /* removed "a"*/ 		
 		
-  			#menu.home ul li.selected {background: transparent url(http://dl.dropbox.com/u/442561/LessIsMoreOptimization/menu-sprite.png) no-repeat 0px 0px;}
-  			#menu.recycle ul li.selected {background: transparent url(http://dl.dropbox.com/u/442561/LessIsMoreOptimization/menu-sprite.png) no-repeat -79px -36px;}
-  			#menu.reduce-reuse ul li.selected {background: transparent url(http://dl.dropbox.com/u/442561/LessIsMoreOptimization/menu-sprite.png) no-repeat -161px -0px;}
-  			#menu.yard-waste ul li.selected {background: transparent url(http://dl.dropbox.com/u/442561/LessIsMoreOptimization/menu-sprite.png) no-repeat -303px -36px;}
-  			#menu.hazardous-waste ul li.selected {background: transparent url(http://dl.dropbox.com/u/442561/LessIsMoreOptimization/menu-sprite.png) no-repeat -423px -0px;}
-  			#menu.electronics ul li.selected {background: transparent url(http://dl.dropbox.com/u/442561/LessIsMoreOptimization/menu-sprite.png) no-repeat -587px -36px;}
-  			#menu.trash ul li.selected {background: transparent url(http://dl.dropbox.com/u/442561/LessIsMoreOptimization/menu-sprite.png) no-repeat -706px -0px;}
-  			#menu.events ul li.selected {background: transparent url(http://dl.dropbox.com/u/442561/LessIsMoreOptimization/menu-sprite.png) no-repeat -778px -36px}
+  			#menu.home ul li.selected {background: transparent url(../images/menu-sprite.png) no-repeat 0px 0px;}
+  			#menu.recycle ul li.selected {background: transparent url(../images/menu-sprite.png) no-repeat -79px -36px;}
+  			#menu.reduce-reuse ul li.selected {background: transparent url(../images/menu-sprite.png) no-repeat -161px -0px;}
+  			#menu.yard-waste ul li.selected {background: transparent url(../images/menu-sprite.png) no-repeat -303px -36px;}
+  			#menu.hazardous-waste ul li.selected {background: transparent url(../images/menu-sprite.png) no-repeat -423px -0px;}
+  			#menu.electronics ul li.selected {background: transparent url(../images/menu-sprite.png) no-repeat -587px -36px;}
+  			#menu.trash ul li.selected {background: transparent url(../images/menu-sprite.png) no-repeat -706px -0px;}
+  			#menu.events ul li.selected {background: transparent url(../images/menu-sprite.png) no-repeat -778px -36px}
  		#menu ul {padding: 0; height: 36px; width: 876px; margin: 0 auto; list-style: none; position:relative;}
 /***Something about the position absolute on the li is making it move ***/  
 
