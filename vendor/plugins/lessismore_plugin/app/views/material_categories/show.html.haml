@@ -7,6 +7,7 @@
 -unless @material_category.body.blank?
   .material_cat_body= @material_category.body
 - unless @materials.empty?
+  %a{:id => "materials"}
   %ul.materials
     - for material in @materials
       %li= link_to h(material.name), material
