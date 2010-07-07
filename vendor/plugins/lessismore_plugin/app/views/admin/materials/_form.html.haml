@@ -44,19 +44,31 @@
 
 
 %h2 Related Materials
-.related_materials
-  - for material in @materials
+- @materials.group_by(&:material_category).each do |material_category, materials|
+  %p{:class => "#{material_category.css_class}"}= h material_category.name
+  - for material in materials
     %div[material]
       = check_box_tag "material[related_material_ids][]", material.id, @material ? @material.related_materials.include?(material) : nil, :id => "check_box_#{dom_id material}"
-      %label{:for => "check_box_#{dom_id material}"}= h material.name
-
-
+      %label{:for => "check_box_#{dom_id material}"}
+        - if material.name.size > 18
+          %abbr{:title => h(material.name)}= truncate h(material.name), :length => 18
+        - else
+          = h material.name
+  = clear
+  
 %h2 Locations accepting this material
-
-- for location in @locations
-  %div[location]
-    = check_box_tag "material[location_ids][]", location.id, @material ? @material.locations.include?(location) : nil, :id => "check_box_#{dom_id location}"
-    %label{:for => "check_box_#{dom_id location}"}= h location.name
+%ul.city
+  - @locations.sort_by(&:region_name).group_by(&:region_name).each do |region, region_locations|
+    %li
+      %h3{:id => region}
+        = h region
+        == (#{region_locations.size})
+        %span.js-arrow
+      %ul.locations
+        - for location in region_locations.sort_by(&:name)
+          %li[location]
+            = check_box_tag "material[location_ids][]", location.id, @material ? @material.locations.include?(location) : nil, :id => "check_box_#{dom_id location}"
+            %label{:for => "check_box_#{dom_id location}"}= h location.name    
 
 - fancy_submit admin_materials_path do
   = f.submit "Save material", :class => "big"

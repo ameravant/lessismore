@@ -11,7 +11,7 @@
   %h2= category
   -for material in materials
     %div{:id => "material_#{material.id}", :class => "admin_material"}
-      = material_tag material.material_category
+      = material.updated_at.strftime("%m/%d/%Y &mdash;")
       = link_to h(material.name), edit_admin_material_path(material)
       = link_to_remote image_tag("/images/icons/gray/16x16/Trash.png", :id => "delete_icon_#{material.id}"), :url => admin_material_path(material), :method => :delete, :success => "$('delete_icon_#{material.id}').src = '/images/spinner.gif'", :confirm => "Really delete this #{material.name}?"
       - if material.search_keywords.blank?

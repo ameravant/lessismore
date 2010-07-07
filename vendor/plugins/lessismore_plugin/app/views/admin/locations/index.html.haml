@@ -27,6 +27,7 @@
         %ul.locations
           - for location in region_locations.sort_by(&:name)
             %li[location]
+              = location.updated_at.strftime("%m/%d/%Y &mdash;")
               = link_to h(location.name), edit_admin_location_path(location)
               = "&mdash; #{location.address}"
               = link_to_remote image_tag("/images/icons/gray/16x16/Trash.png", :id => "delete_icon_#{location.id}"), :url => admin_location_path(location), :method => :delete, :success => "$('delete_icon_#{location.id}').src = '/images/spinner.gif'", :confirm => "Really delete this location?"
