@@ -3,9 +3,9 @@ class Location < ActiveRecord::Base
   has_permalink :name
   has_and_belongs_to_many :materials
   validates_presence_of :name
-  validates_presence_of :address, :message => "must be filled-in with a real address"
-  validates_presence_of :city, :state, :if => :zip_blank?, :message => "must be entered when zip is blank"
-  validates_presence_of :zip, :if => :city_or_state_blank?, :message => "must be entered when city or state are blank"
+  # validates_presence_of :address, :message => "must be filled-in with a real address"
+  # validates_presence_of :city, :state, :if => :zip_blank?, :message => "must be entered when zip is blank"
+  # validates_presence_of :zip, :if => :city_or_state_blank?, :message => "must be entered when city or state are blank"
   validates_numericality_of :zip, :message => "must be a 5 digit number", :allow_blank => true
   validates_length_of :zip, :is => 5, :message => "must be a 5 digit number", :allow_blank => true
   validates_numericality_of :lat, :lng, :allow_blank => true

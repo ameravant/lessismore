@@ -6,7 +6,7 @@
 - content_for :side_column do
   #map_canvas
   %address
-    -unless @location.full_address_sans_zip.blank?
+    -unless @location.full_address_sans_zip.blank? or @location.address.blank?
       %strong Address:
       = h @location.full_address_sans_zip
       %br

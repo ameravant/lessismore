@@ -9,5 +9,6 @@
         - for location in region_locations.sort_by(&:name)
           %li[location]
             = link_to h(location.name), location
-            &mdash;
-            = location.address
+            -if !location.address.blank?
+              &mdash;
+              = location.address
