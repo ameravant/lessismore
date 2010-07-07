@@ -40,8 +40,8 @@
 %p
   = f.label :description
   = f.text_area :description,  :size => "80x30", :class => "mceEditor"
-
-
+- fancy_submit admin_materials_path do
+  = f.submit "Save material", :class => "big"
 
 %h2 Related Materials
 - @materials.group_by(&:material_category).each do |material_category, materials|
