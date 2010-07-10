@@ -35,12 +35,10 @@ class ApplicationController < ActionController::Base
   end
 
   def get_siteninja_config
-    @renv = request.env["REQUEST_PATH"]
-    @allre = request
     redirects = Redirect.all
     if !redirects.blank?
       redirects.each do |r|
-        if request.env["REQUEST_PATH"] == r.from_url
+        if request.request_uri == r.from_url
           redirect_to "#{r.to_url}"
         end
       end
