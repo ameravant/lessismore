@@ -53,6 +53,10 @@
     %div
       = f.check_box :show_tags_in_sidebar
       = f.label :show_tags_in_sidebar
+  %h2 Url Redirects  
+  %div
+    = link_to "View all redirects", admin_redirects_path
+
   %h2 Additional Css and Javascript  
   %div
     = f.label :additional_styles
