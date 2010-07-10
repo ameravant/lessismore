@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_siteninja_config
-    @blah = request.env["PATH_INFO"]
+    @blah = request.env
     redirects = Redirect.all
     if !redirects.blank?
       redirects.each do |r|
