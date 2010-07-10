@@ -91,6 +91,7 @@
               #espanol= link_to("Espa&#241;ol","http://translate.google.com/translate?hl=en&sl=en&tl=es&u=http://#{request.domain}#{request.request_uri}")
               = clear
             #content-main
+              =debug @blah
               = flash_div
               -if !@admin
                 -if !@page.introduction_banner_body.blank? or !@page.introduction_banner_headline.blank?
