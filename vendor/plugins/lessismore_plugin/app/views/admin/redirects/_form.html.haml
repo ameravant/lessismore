@@ -1,0 +1,13 @@
+= f.error_messages
+
+%p
+  = f.label :from_url
+  = f.text_field :from_url, :size => 70
+
+%p
+  = f.label :to_url
+  = f.text_field :to_url, :size => 70
+
+- fancy_submit admin_redirects_path do
+  = f.submit "Save Redirect", :class => "big"
+

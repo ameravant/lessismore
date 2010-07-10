@@ -1,0 +1,9 @@
+- content_for :crumb do
+  == #{link_to "Dashboard", admin_path} &gt;
+  == #{link_to "redirects", admin_redirects_path} &gt;
+
+%h1
+  Edit Redirect
+
+- form_for [:admin, @redirect], :html => {:onsubmit => "form_submitted()" } do |f|
+  = render :partial => "form", :locals => { :f => f }

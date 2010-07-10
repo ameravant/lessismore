@@ -1,0 +1,79 @@
+- content_for :meta_title do
+  CMS Settings
+  
+%h1= yield(:meta_title).strip
+
+- form_for :settings, :url => admin_setting_path, :html => { :method => :put, :multipart => true, :onsubmit => "form_submitted();" } do |f|
+  = f.error_messages
+
+  %h2 Inquiries
+  %div
+    = f.label :inquiry_notification_email
+    = f.text_field :inquiry_notification_email
+  - if @cms_config['modules']['events']
+    %h2 Events
+    %div
+      = f.label :events_range, "Events date range"
+      = f.select :events_range, {"One week" => 1, "One month" => 2, "Three months" => 3, "One year" => 4, "All" => 5}
+  - if @cms_config['features']['feature_box'] or @cms_config['features']['testimonials']
+    %div
+      = f.check_box :articles_right
+      = f.label :articles_right, "Show Articles on Right side of homepage"
+    %div
+      = f.check_box :articles_cat_right
+      = f.label :articles_cat_right, "Show Article Categories on Right side of homepage"
+    - if @cms_config['features']['feature_box']
+      %div
+
+        = f.check_box :show_features
+        = f.label :show_features, "Show Features Box"
+      %div
+        = f.check_box :show_feature_thumbs
+        = f.label :show_feature_thumbs, "Show thumbnails under Feature Box"
+    - if @cms_config['features']['testimonials']
+      %div
+        = f.check_box :show_testimonials
+        = f.label :show_testimonials, "Show Testimonials"
+
+      
+  - if @cms_config['modules']['blog']
+    %h2 Blog
+    %div
+      = f.check_box :comment_profanity_filter
+      = f.label :comment_profanity_filter, "Automatically filter profanity from comments"
+    %div
+      = f.check_box :show_categories_in_sidebar
+      = f.label :show_categories_in_sidebar
+    %div
+      = f.check_box :show_archive_in_sidebar
+      = f.label :show_archive_in_sidebar
+    %div
+      = f.check_box :show_authors_in_sidebar
+      = f.label :show_authors_in_sidebar
+    %div
+      = f.check_box :show_tags_in_sidebar
+      = f.label :show_tags_in_sidebar
+  %h2 Additional Css and Javascript  
+  %div
+    = f.label :additional_styles
+    %br
+    = f.text_area :additional_styles, :size => '80x15'
+  %div
+    = f.label :javascript
+    %br
+    = f.text_area :javascript, :size => '80x15'
+
+  %h2 Template Settings
+  %p
+    = f.label :logo
+    = f.file_field :logo
+  %p
+    = f.label :tracking_code
+    %br
+    = f.text_area :tracking_code, :size => '80x5'
+  %p
+    = f.label :footer_text
+    = f.text_area :footer_text, :size => '80x15', :class => "mceEditor"
+    .gray You may have the current year inserted by typing <strong>#YEAR#</strong>.
+  - fancy_submit '/admin' do
+    = f.submit "Save settings"

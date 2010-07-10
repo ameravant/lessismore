@@ -1,0 +1,17 @@
+- content_for :meta_title do
+  Redirects
+
+%h1
+  Redirects
+
+%p
+  = icon "Plus"
+  = link_to "Add a new redirect", new_admin_redirect_path
+
+%h2
+  Redirect From &mdash; Redirect To
+%ul{:style => "list-style-type:none;"}
+  - @redirects.each do |redirect|
+    %li{:id => "redirect_#{redirect.id}", :class => "admin_redirect"}
+      = link_to "#{redirect.from_url} &mdash; #{redirect.to_url}", edit_admin_redirect_path(redirect)
+      = link_to_remote image_tag("/images/icons/gray/16x16/Trash.png", :id => "delete_icon_#{redirect.id}"), :url => admin_redirect_path(redirect), :method => :delete, :success => "$('delete_icon_#{redirect.id}').src = '/images/spinner.gif'", :confirm => "Really delete this Redirect?"

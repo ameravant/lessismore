@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  unloadable
   before_filter :material_categories_for_menu, :except => [ :destroy, :restore, :reorder ]
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password
@@ -29,6 +30,15 @@ class ApplicationController < ActionController::Base
   private
 
   def cms_for_layout
+    request.env["REQUEST_PATH"]
+    redirects = Redirect.all
+    if !redirects.blank?
+      redirects.each do |r|
+        if request.env["REQUEST_PATH"] == r.from_url
+          redirect_to "#{r.to_url}"
+        end
+      end
+    end
     @menu = Page.visible
     @settings = Setting.first
   end

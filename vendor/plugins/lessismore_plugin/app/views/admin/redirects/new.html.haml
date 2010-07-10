@@ -1,0 +1,12 @@
+- content_for :meta_title do
+  New Redirect
+
+- content_for :crumb do
+  == #{link_to "Dashboard", admin_path} &gt;
+  == #{link_to "redirects", admin_redirects_path} &gt;
+
+%h1
+  New Redirect
+
+- form_for [:admin, @redirect], :html => {:multipart => true, :onsubmit => "form_submitted()" } do |f|
+  = render :partial => "form", :locals => { :f => f }

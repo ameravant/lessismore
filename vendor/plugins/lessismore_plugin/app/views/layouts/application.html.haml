@@ -55,6 +55,8 @@
     = javascript_include_tag "/plugin_assets/siteninja_core/javascripts/ninja_slideshow.js"
     = javascript_tag "jQuery.noConflict();"
   = javascript_include_tag '/javascripts/jquery.autocomplete.min.js'
+  = stylesheet_link_tag "/stylesheet/additional_styles.css" unless @settings.additional_styles.blank?
+  = javascript_include_tag "/javascript/javascript.js" unless @settings.javascript.blank?
   = yield :head if @content_for_head # For scripts and styles specific to view
   
   - if @content_for_onload
