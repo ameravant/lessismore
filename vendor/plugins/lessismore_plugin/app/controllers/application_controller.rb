@@ -30,6 +30,11 @@ class ApplicationController < ActionController::Base
   private
 
   def cms_for_layout
+    @menu = Page.visible
+    @settings = Setting.first
+  end
+
+  def get_siteninja_config
     request.env["REQUEST_PATH"]
     redirects = Redirect.all
     if !redirects.blank?
@@ -39,11 +44,6 @@ class ApplicationController < ActionController::Base
         end
       end
     end
-    @menu = Page.visible
-    @settings = Setting.first
-  end
-
-  def get_siteninja_config
     @cms_config = YAML::load_file("#{RAILS_ROOT}/config/cms.yml")
   end
 
