@@ -1,5 +1,5 @@
 %ul.city
-  - @locations.sort_by(&:region_name).group_by(&:region_name).each do |region, region_locations|
+  - @locations.sort_by(&:region_id).group_by(&:region_name).each do |region, region_locations|
     %li
       %h3{:id => region}
         = h region
