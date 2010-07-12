@@ -10,7 +10,6 @@ unloadable
     add_breadcrumb "Home", "/"
     add_breadcrumb @material_category.name, @material_category
     add_breadcrumb @material.name
-
   end
   def index
     @materials = Material.all

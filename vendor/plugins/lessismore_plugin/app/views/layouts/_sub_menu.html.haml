@@ -15,5 +15,5 @@
       -if sub_material.in_sub_menu
         %li= link_to sub_material.name, sub_material
     %li{:style =>"float:right;"}
-      = link_to("All Materials", "#materials")
+      = link_to("All Materials", material_category_path(@material_category, :anchor => "materials"))
 
