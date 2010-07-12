@@ -21,7 +21,7 @@
     -unless @location.email.blank?
       %strong Email:
       =mail_to @location.email
-%h1= yield :title
+%h1= yield :meta_title
 - unless @location.blank? 
   .description
     =@location.description
