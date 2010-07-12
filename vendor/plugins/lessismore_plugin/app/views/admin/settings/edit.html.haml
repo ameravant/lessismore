@@ -75,9 +75,9 @@
     = f.label :tracking_code
     %br
     = f.text_area :tracking_code, :size => '80x5'
-  %p
-    = f.label :footer_text
-    = f.text_area :footer_text, :size => '80x15', :class => "mceEditor"
-    .gray You may have the current year inserted by typing <strong>#YEAR#</strong>.
+  / %p
+  /   = f.label :footer_text
+  /   = f.text_area :footer_text, :size => '80x15', :class => "mceEditor"
+  /   .gray You may have the current year inserted by typing <strong>#YEAR#</strong>.
   - fancy_submit '/admin' do
     = f.submit "Save settings"

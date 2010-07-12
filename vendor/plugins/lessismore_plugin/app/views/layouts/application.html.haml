@@ -90,8 +90,7 @@
                 #crumb= @breadcrumbs.map { |txt, path| link_to_unless(path.blank?, h(txt), path) }.join(" > ")
               #espanol= link_to("Espa&#241;ol","http://translate.google.com/translate?hl=en&sl=en&tl=es&u=http://#{request.domain}#{request.request_uri}")
               = clear
-            #content-main
-              = flash_div
+            #content-main              = flash_div
               -if !@admin
                 -if !@page.introduction_banner_body.blank? or !@page.introduction_banner_headline.blank?
                   - content_for :instruction do
@@ -123,7 +122,7 @@
               #footer-right-column
                 %h2 Copyright and Usage
                 %p== &copy;#{Time.new.year} The County of Santa Barbara, Public Works Department, Resource Recovery & Waste Management Division.
-                %p== Read our #{link_to("Privacy Policy", "#{$DOMAIN_PATH}privacy-policy")} and #{link_to("Terms of Use", "#{$DOMAIN_PATH}terms-of-use")}.
+                %p== Read our #{link_to("Privacy Policy", "/privacy-policy")} and #{link_to("Terms of Use", "/terms-of-use")}.
                 %p== Site designed and developed by #{link_to("Ameravant Web Design", "http://www.ameravant.com")}.
                 = clear 
               = clear
