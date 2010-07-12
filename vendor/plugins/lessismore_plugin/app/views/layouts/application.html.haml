@@ -90,7 +90,8 @@
                 #crumb= @breadcrumbs.map { |txt, path| link_to_unless(path.blank?, h(txt), path) }.join(" > ")
               #espanol= link_to("Espa&#241;ol","http://translate.google.com/translate?hl=en&sl=en&tl=es&u=http://#{request.domain}#{request.request_uri}")
               = clear
-            #content-main              = flash_div
+            #content-main
+              = flash_div
               -if !@admin
                 -if !@page.introduction_banner_body.blank? or !@page.introduction_banner_headline.blank?
                   - content_for :instruction do
