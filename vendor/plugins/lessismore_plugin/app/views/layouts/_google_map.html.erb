@@ -13,7 +13,6 @@ lng = map_link_parse[1]
       var map = new GMap2($("map_canvas"));
       var latlon = new GLatLng(<%= lat %>, <%= lng %>)
       map.setCenter(latlon, <%= zoom %>);
-      map.setMapType(G_PHYSICAL_MAP);
       map.setUIToDefault();
       map.addOverlay(new GMarker(latlon));
     }
