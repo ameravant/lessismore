@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   unloadable
+  alias_method :rescue_action_locally, :rescue_action_in_public
   before_filter :material_categories_for_menu, :except => [ :destroy, :restore, :reorder ]
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password
@@ -33,7 +34,23 @@ class ApplicationController < ActionController::Base
     @menu = Page.visible
     @settings = Setting.first
   end
-
+  
+  def render_optional_error_file(status_code)
+    if status_code == :not_found or status_code == :internal_server_error
+      redirects = Redirect.all
+      if !redirects.blank?
+        redirects.each do |r|
+          if request.request_uri == r.from_url
+            redirect_to "#{r.to_url}" and return
+          end
+        end
+        super
+      end
+    else
+      super
+    end
+  end
+    
   def get_siteninja_config
     redirects = Redirect.all
     if !redirects.blank?
