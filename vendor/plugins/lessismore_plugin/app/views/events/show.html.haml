@@ -1,3 +1,5 @@
+- unless @event.address.blank?
+  - render :partial => "/shared/google_maps_includes"
 - content_for :meta_title do
   = @event.name
 
@@ -20,10 +22,8 @@
   - # Map and address
   - unless @event.address.blank?
     %h2 Location
-    - content_for :head do
-      = render :partial => "/shared/google_maps_includes"
     %div= h @event.address
-    #google_map
+    #map_canvas
     %div= link_to "View larger map", "http://maps.google.com?q=#{u @event.address}"
   -unless @event.materials.blank?
     %h2 Related Materials
