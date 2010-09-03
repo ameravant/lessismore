@@ -53,7 +53,8 @@
     = javascript_include_tag "/plugin_assets/siteninja_core/jquery-galleryview-1.1/jquery.timers-1.1.2.js"
     = stylesheet_link_tag "/plugin_assets/siteninja_core/jquery-galleryview-1.1/galleryview.css"
     = javascript_include_tag "/plugin_assets/siteninja_core/javascripts/ninja_slideshow.js"
-    = javascript_tag "jQuery.noConflict();"
+    -if !@event
+      = javascript_tag "jQuery.noConflict();"
   = javascript_include_tag '/javascripts/jquery.autocomplete.min.js'
   = stylesheet_link_tag "/stylesheet/additional_styles.css" unless @settings.additional_styles.blank?
   = javascript_include_tag "/javascript/javascript.js" unless @settings.javascript.blank?
