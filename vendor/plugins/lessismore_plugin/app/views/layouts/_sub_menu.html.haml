@@ -4,7 +4,7 @@
       -if subpage.status != "hidden"
         %li= link_to subpage.title, subpage 
   -if !@page.blank? 
-    -if @page.permalink == "home" or @page.parent_id == 1
+    -if @page.permalink == "home" or @page.parent_id == 1 or @page.permalink == "blog"
       %li=link_to "Locations", "/locations"
       %li=link_to "Contact Us", "/contact-us"
   / -unless @sub_articles.blank?
