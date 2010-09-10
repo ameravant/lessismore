@@ -1,5 +1,6 @@
 %ul#articles.items-for-list
   = render :partial => @articles
+=link_to "Read more articles", blog_path
 - content_for :side_column do
   -if @events
     %h2 Upcoming Events

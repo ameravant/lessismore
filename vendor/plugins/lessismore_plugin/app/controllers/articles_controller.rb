@@ -69,7 +69,10 @@ class ArticlesController < ApplicationController
   
   def find_page
     @footer_pages = Page.find(:all, :conditions => {:show_in_footer => true}, :order => :footer_pos )
-    @page = Page.find_by_permalink!('blog')
+    # @page = Page.find_by_permalink!('blog')
+    #this is here to display homepage menus when under blog
+    @page = Page.find_by_permalink!("home")
+    @sub_pages = Page.find(:all, :conditions => {:parent_id => [@page.id,""], :status => 'visible'})
   end
   
   def find_articles_for_sidebar
