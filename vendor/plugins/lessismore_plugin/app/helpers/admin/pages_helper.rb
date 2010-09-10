@@ -17,7 +17,13 @@ module Admin::PagesHelper
         else
           concat link_to(h(child.title), edit_admin_page_path(child), :class => child.hidden? ? 'gray' : nil)
         end
-        concat ' ' + content_tag('span', '&mdash; hidden from menus', :class => ' small gray') if child.status == 'hidden'
+        if child.status == 'hidden'
+          if child.permalink == 'locations' or child.permalink == 'contact-us'
+            concat ' ' + content_tag('span', '&mdash; moving this will not affect menu placement', :class => ' small gray')
+          else
+            concat ' ' + content_tag('span', '&mdash; hidden from menus', :class => ' small gray')
+          end
+        end
         concat ' &mdash; ' + link_to("Manage Homepage Features", admin_features_path) if (child.permalink == "home")
 
         concat '</div><div class="page-options">'

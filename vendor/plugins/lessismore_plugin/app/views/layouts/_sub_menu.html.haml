@@ -1,15 +1,15 @@
 %ul
-  -if !@page.blank? 
-    -if @page.permalink == "home" or @page.parent_id == 1
-      %li=link_to "Locations", "/locations"
-      %li=link_to "Contact Us", "/contact-us"
   -unless @sub_pages.blank?
     -for subpage in @sub_pages
       -if subpage.status != "hidden"
         %li= link_to subpage.title, subpage 
-  -unless @sub_articles.blank?
-    -for subarticle in @sub_articles
-      %li= link_to subarticle.title, subarticle 
+  -if !@page.blank? 
+    -if @page.permalink == "home" or @page.parent_id == 1
+      %li=link_to "Locations", "/locations"
+      %li=link_to "Contact Us", "/contact-us"
+  / -unless @sub_articles.blank?
+  /   -for subarticle in @sub_articles
+  /     %li= link_to subarticle.title, subarticle 
   -unless @sub_materials.blank?
     -for sub_material in @sub_materials
       -if sub_material.in_sub_menu
